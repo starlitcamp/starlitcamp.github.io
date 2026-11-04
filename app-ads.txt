@@ -1,5 +1,5 @@
-# app-ads.txt for Quasar Lab (quasarlab-games.github.io)
-OWNERDOMAIN=quasarlab-games.github.io
+# app-ads.txt for Starlit Camp (starlitcamp.github.io)
+OWNERDOMAIN=starlitcamp.github.io
 
 # Unity Ads / LevelPlay (Unity org 14569789429745)
 adwmg.com, 159512, RESELLER, c9688a22012618e7
