@@ -3,33 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="stylesheet" href="style.css">
+<script>(function(){if(/bot|crawl|spider|slurp|preview|lighthouse/i.test(navigator.userAgent))return;var L=["ko","en","ja","es"],p=null;try{p=localStorage.getItem("sc_lang")}catch(e){}if(L.indexOf(p)<0){p=null;var n=navigator.languages||[navigator.language||""];for(var i=0;i<n.length&&!p;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(L.indexOf(c)>=0)p=c}p=p||"en"}if(p!=="ko")location.replace(p+"/"+location.pathname.split("/").pop()+location.search+location.hash)})();</script>
 <title>마법사의 탑 (Wizard Tower) | Starlit Camp</title>
 <meta name="description" content="마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG">
 <meta property="og:title" content="마법사의 탑 (Wizard Tower)">
 <meta property="og:description" content="마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG">
 <meta property="og:image" content="https://starlitcamp.github.io/img/wizardtower_feature.png">
+<link rel="canonical" href="https://starlitcamp.github.io/wizardtower.html">
+<link rel="alternate" hreflang="ko" href="https://starlitcamp.github.io/wizardtower.html">
+<link rel="alternate" hreflang="en" href="https://starlitcamp.github.io/en/wizardtower.html">
+<link rel="alternate" hreflang="ja" href="https://starlitcamp.github.io/ja/wizardtower.html">
+<link rel="alternate" hreflang="es" href="https://starlitcamp.github.io/es/wizardtower.html">
+<link rel="alternate" hreflang="x-default" href="https://starlitcamp.github.io/wizardtower.html">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script src="games.js"></script>
+<script src="site.js" defer></script>
 <style>.pixel img{image-rendering:pixelated}</style>
 </head>
 <body>
 <div class="wrap">
+  <nav class="langbar" aria-label="Language"><a href="wizardtower.html" data-setlang="ko" hreflang="ko" lang="ko" aria-current="true">한국어</a><a href="en/wizardtower.html" data-setlang="en" hreflang="en" lang="en">English</a><a href="ja/wizardtower.html" data-setlang="ja" hreflang="ja" lang="ja">日本語</a><a href="es/wizardtower.html" data-setlang="es" hreflang="es" lang="es">Español</a></nav>
   <header class="site">
     <a class="brand" href="./"><img src="img/starlitcamp_icon.png" alt="" style="image-rendering:pixelated;border-radius:8px"><span class="brand-name">Starlit Camp</span></a>
-    <nav><a href="./#games">Games</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="./#contact">Contact</a></nav>
+    <nav><a href="./#games">게임</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="./#contact">문의</a></nav>
   </header>
 
   <div class="gamehead pixel">
-    <img src="img/wizardtower_icon.png" alt="마법사의 탑 아이콘">
+    <img src="img/wizardtower_icon.png" alt="마법사의 탑">
     <div>
       <h1>마법사의 탑</h1>
-      <p class="sub">Wizard Tower · Android · 출시 준비 중 (Coming soon)</p>
+      <p class="sub">Wizard Tower · Android · <span data-game="wizardtower" data-when="soon" hidden>출시 준비 중</span><span data-game="wizardtower" data-when="recruiting">테스터 모집 중</span><span data-game="wizardtower" data-when="testing" hidden>비공개 테스트 중</span><span data-game="wizardtower" data-when="released" hidden>Google Play 출시</span></p>
     </div>
   </div>
   <div class="hero pixel"><img src="img/wizardtower_feature.png" alt="마법사의 탑 대표 이미지: 별밤 아래 탑을 향해 몰려오는 마물들"></div>
 
   <p class="lead">마물이 득실대는 탑을 한 층씩 올라가세요. 끝없이 몰려오는 마물 대군을 진화하는 마법으로 한 번에 쓸어버리는 도트 방치 RPG입니다.</p>
-  <p>Climb a tower crawling with monsters, one floor at a time. Sweep away endless hordes with spells that evolve as you level them up — a pixel-art idle RPG.</p>
+  <div class="links">
+    <a class="btn primary" data-game="wizardtower" data-when="recruiting testing" href="#join">테스트 참여 방법 보기</a>
+    <span data-game="wizardtower" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a></span>
+  </div>
 
   <div class="shots pixel">
     <img src="img/wizardtower_shot1.png" alt="일반 전투: 운석과 번개 마법이 마물 무리에 쏟아지는 장면">
@@ -37,7 +50,7 @@
     <img src="img/wizardtower_shot3.png" alt="황금 고블린 이벤트 배너">
   </div>
 
-  <h2>특징 / Features</h2>
+  <h2>특징</h2>
   <ul class="features">
     <li><b>진화하는 마법 25종</b>불·얼음·번개·비전, 차원마다 깨어나는 바람·대지·빛·어둠. 파이어볼이 화염 폭발이 되고, 마침내 운석이 떨어져요.</li>
     <li><b>조합 마법과 갈래</b>두 원소를 키우면 증기 폭발, 플라즈마 빔, 지옥불 같은 조합 마법이 발견되고, 갈래를 골라 나만의 빌드를 만들어요.</li>
@@ -45,16 +58,50 @@
     <li><b>오르고, 승천하고, 다시</b>봉인된 방을 열어 탑을 키우고, 별의 계단에 닿으면 승천해 새로운 차원의 탑에 도전해요. 자리를 비워도 마나가 쌓여요.</li>
   </ul>
 
-  <h2>지원 / Support</h2>
+  <section id="join" class="join">
+    <div data-game="wizardtower" data-when="testing" hidden>
+      <h2>비공개 테스트 참여하기</h2>
+      <p>마법사의 탑 비공개 테스트가 Google Play에서 진행 중이에요. 아래 순서대로 누구나 참여할 수 있어요.</p>
+    <ol class="steps">
+      <li><b class="t">테스터 그룹 가입</b>Play 스토어에서 쓰는 Google 계정으로 로그인한 뒤, Google 그룹 <b>Starlit Camp Testers</b>에서 <b>그룹 가입</b>을 눌러 주세요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">테스터 그룹 가입하기</a></div></li>
+      <li><b class="t">테스트 참여 신청</b>테스트 참여 링크를 열고 <b>테스터 되기</b>를 눌러 주세요. 그룹에 가입한 직후에는 반영까지 몇 분 걸릴 수 있어요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="optin" href="https://play.google.com/apps/testing/com.starlitcamp.wizardtower" rel="noopener">테스트 참여 링크</a></div></li>
+      <li><b class="t">Google Play에서 설치</b>참여 신청이 끝나면 Google Play 스토어 페이지에서 게임을 설치하세요. 휴대폰의 Play 스토어 앱에서 검색해도 돼요.<div class="links"><a class="btn" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a></div></li>
+      <li><b class="t">14일간 유지하고 의견 보내기</b>정식 출시를 위해 테스터분들이 <b>14일 이상</b> 앱을 설치한 상태로 유지해 주셔야 해요. 가끔 플레이하면서 버그나 아이디어를 메일이나 Play 스토어의 비공개 의견으로 보내 주시면 큰 도움이 돼요.<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5B%EB%A7%88%EB%B2%95%EC%82%AC%EC%9D%98%20%ED%83%91%5D%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a></div></li>
+    </ol>
+      <p class="note">※ Android 전용이에요. 그룹 가입, 테스트 참여 신청, 설치에는 모두 같은 Google 계정을 써 주세요. 테스트 중에는 게임 내용과 밸런스가 바뀔 수 있어요.</p>
+    </div>
+    <div data-game="wizardtower" data-when="recruiting">
+      <h2>비공개 테스터 모집</h2>
+      <p>마법사의 탑 출시 전 비공개 테스트를 준비하고 있어요. 테스터 그룹에 미리 가입해 두시면 테스트가 열리는 대로 바로 참여할 수 있어요.</p>
+    <ol class="steps">
+      <li><b class="t">테스터 그룹 가입</b>Play 스토어에서 쓰는 Google 계정으로 로그인한 뒤, Google 그룹 <b>Starlit Camp Testers</b>에서 <b>그룹 가입</b>을 눌러 주세요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">테스터 그룹 가입하기</a></div></li>
+      <li><b class="t">테스트 오픈 안내 받기</b>테스트가 열리면 이 페이지에 참여 링크와 설치 방법이 올라오고, 그룹 공지로도 알려 드려요.</li>
+      <li><b class="t">14일간 유지하고 의견 보내기</b>테스트가 열리면 설치 후 14일 이상 유지하면서 플레이하고 의견을 들려주세요.</li>
+    </ol>
+      <p class="note">※ Android 전용이에요. Play 스토어에서 쓰는 Google 계정으로 가입해 주세요.</p>
+    </div>
+    <div data-game="wizardtower" data-when="released" hidden>
+      <h2>지금 플레이하기</h2>
+      <p>마법사의 탑, 지금 Google Play에서 무료로 받아 보세요.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store에서 받기</a></div>
+      <p class="note">비공개 테스트에 참여해 주신 모든 분께 감사드립니다.</p>
+    </div>
+    <div data-game="wizardtower" data-when="soon" hidden>
+      <h2>출시 준비 중</h2>
+      <p>마법사의 탑 출시를 준비하고 있어요. 소식은 이 페이지에서 알려 드릴게요.</p>
+    </div>
+  </section>
+
+  <h2>지원</h2>
   <div class="links">
-    <a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5B%EB%A7%88%EB%B2%95%EC%82%AC%EC%9D%98%20%ED%83%91%5D%20%EB%AC%B8%EC%9D%98">문의하기 / Contact</a>
-    <a class="btn" href="privacy.html">개인정보처리방침 / Privacy Policy</a>
-    <a class="btn" href="terms.html">이용약관 / Terms</a>
-    <a class="btn" href="data-deletion.html">데이터 삭제 요청 / Data deletion</a>
+    <a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5B%EB%A7%88%EB%B2%95%EC%82%AC%EC%9D%98%20%ED%83%91%5D%20%EB%AC%B8%EC%9D%98">문의하기</a>
+    <a class="btn" href="privacy.html">개인정보처리방침</a>
+    <a class="btn" href="terms.html">이용약관</a>
+    <a class="btn" href="data-deletion.html">데이터 삭제 요청</a>
   </div>
   <p class="note">※ 무료 게임이며 광고와 인앱 구매(광고 제거·프리미엄)가 포함되어 있습니다. 게임 진행은 기기에만 저장되며 계정이 필요 없습니다.</p>
 
-  <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">개인정보처리방침 / Privacy</a><a href="terms.html">이용약관 / Terms</a><a href="data-deletion.html">데이터 삭제 / Data deletion</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
+  <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="data-deletion.html">데이터 삭제</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
 </div>
 </body>
 </html>

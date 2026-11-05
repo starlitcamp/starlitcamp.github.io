@@ -3,43 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="stylesheet" href="style.css">
+<script>(function(){if(/bot|crawl|spider|slurp|preview|lighthouse/i.test(navigator.userAgent))return;var L=["ko","en","ja","es"],p=null;try{p=localStorage.getItem("sc_lang")}catch(e){}if(L.indexOf(p)<0){p=null;var n=navigator.languages||[navigator.language||""];for(var i=0;i<n.length&&!p;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(L.indexOf(c)>=0)p=c}p=p||"en"}if(p!=="ko")location.replace(p+"/"+location.pathname.split("/").pop()+location.search+location.hash)})();</script>
 <title>Starlit Camp</title>
 <meta name="description" content="Starlit Camp - 별빛 아래 모닥불 곁에서 작은 게임을 만드는 인디 게임 스튜디오">
+<meta property="og:title" content="Starlit Camp">
+<meta property="og:description" content="Starlit Camp - 별빛 아래 모닥불 곁에서 작은 게임을 만드는 인디 게임 스튜디오">
+<meta property="og:image" content="https://starlitcamp.github.io/img/starlitcamp_header.png">
+<link rel="canonical" href="https://starlitcamp.github.io/">
+<link rel="alternate" hreflang="ko" href="https://starlitcamp.github.io/">
+<link rel="alternate" hreflang="en" href="https://starlitcamp.github.io/en/">
+<link rel="alternate" hreflang="ja" href="https://starlitcamp.github.io/ja/">
+<link rel="alternate" hreflang="es" href="https://starlitcamp.github.io/es/">
+<link rel="alternate" hreflang="x-default" href="https://starlitcamp.github.io/">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script src="games.js"></script>
+<script src="site.js" defer></script>
 </head>
 <body>
 <div class="wrap">
+  <nav class="langbar" aria-label="Language"><a href="./" data-setlang="ko" hreflang="ko" lang="ko" aria-current="true">한국어</a><a href="en/" data-setlang="en" hreflang="en" lang="en">English</a><a href="ja/" data-setlang="ja" hreflang="ja" lang="ja">日本語</a><a href="es/" data-setlang="es" hreflang="es" lang="es">Español</a></nav>
   <header class="site">
     <a class="brand" href="./"><img src="img/starlitcamp_icon.png" alt="" style="image-rendering:pixelated;border-radius:8px"><span class="brand-name">Starlit Camp</span></a>
-    <nav><a href="./#games">Games</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="./#contact">Contact</a></nav>
+    <nav><a href="./#games">게임</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="./#contact">문의</a></nav>
   </header>
 
   <div class="hero"><img src="img/starlitcamp_header.png" alt="Starlit Camp" style="image-rendering:pixelated"></div>
   <h1>모닥불 곁에서 만드는 작은 게임</h1>
-  <p class="lead">Starlit Camp는 별빛 아래 모닥불 앞에 앉아 쉬는 것처럼 편안하고, 끝까지 다듬은 작은 게임을 만드는 인디 게임 스튜디오입니다.<br>Small, cozy, polished games from an independent studio.</p>
+  <p class="lead">Starlit Camp는 별빛 아래 모닥불 앞에 앉아 쉬는 것처럼 편안하고, 끝까지 다듬은 작은 게임을 만드는 인디 게임 스튜디오입니다.</p>
 
-  <h2 id="games">Games</h2>
+  <h2 id="games">게임</h2>
   <a class="card" href="stellarbloom.html">
-    <img class="icon" src="img/stellarbloom_icon.jpg" alt="행성 키우기 아이콘">
+    <img class="icon" src="img/stellarbloom_icon.jpg" alt="행성 키우기">
     <div>
-      <h3>행성 키우기 <span style="color:var(--muted);font-weight:400">Stellar Bloom</span> <span class="tag">Android · 테스트 중</span></h3>
-      <p>먼지 한 톨에서 행성, 별, 블랙홀, 은하까지. 부수고 삼켜서 진화하는 네온 우주 성장 게임.<br>Grow a speck of cosmic dust into planets, stars, black holes and galaxies.</p>
+      <h3>행성 키우기 <span class="alt">Stellar Bloom</span> <span class="tag"><span data-game="stellarbloom" data-when="soon" hidden>Android · 출시 준비 중</span><span data-game="stellarbloom" data-when="recruiting" hidden>Android · 테스터 모집 중</span><span data-game="stellarbloom" data-when="testing">Android · 비공개 테스트 중</span><span data-game="stellarbloom" data-when="released" hidden>Android · Google Play 출시</span></span></h3>
+      <p>먼지 한 톨에서 행성, 별, 블랙홀, 은하까지. 부수고 삼켜서 진화하는 네온 우주 성장 게임.</p>
     </div>
   </a>
-
   <a class="card" href="wizardtower.html">
-    <img class="icon" src="img/wizardtower_icon.png" alt="마법사의 탑 아이콘" style="image-rendering:pixelated">
+    <img class="icon" src="img/wizardtower_icon.png" alt="마법사의 탑" style="image-rendering:pixelated">
     <div>
-      <h3>마법사의 탑 <span style="color:var(--muted);font-weight:400">Wizard Tower</span> <span class="tag">Android · 출시 준비 중</span></h3>
-      <p>마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG.<br>Climb a monster-filled tower and sweep away hordes with evolving spells.</p>
+      <h3>마법사의 탑 <span class="alt">Wizard Tower</span> <span class="tag"><span data-game="wizardtower" data-when="soon" hidden>Android · 출시 준비 중</span><span data-game="wizardtower" data-when="recruiting">Android · 테스터 모집 중</span><span data-game="wizardtower" data-when="testing" hidden>Android · 비공개 테스트 중</span><span data-game="wizardtower" data-when="released" hidden>Android · Google Play 출시</span></span></h3>
+      <p>마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG.</p>
     </div>
   </a>
 
-  <h2 id="contact">Contact</h2>
-  <p>문의 / Support: <a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></p>
+  <section class="callout" data-any="recruiting testing">
+    <h2 id="testers">테스터 모집</h2>
+    <p>출시 전 게임을 먼저 플레이하고 의견을 들려주실 테스터를 찾고 있어요. Android 기기와 Google 계정만 있으면 누구나 참여할 수 있어요.</p>
+    <div class="links"><a class="btn primary" data-game="stellarbloom" data-when="recruiting testing" href="stellarbloom.html#join">행성 키우기 참여 방법</a><a class="btn primary" data-game="wizardtower" data-when="recruiting testing" href="wizardtower.html#join">마법사의 탑 참여 방법</a></div>
+  </section>
 
-  <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">개인정보처리방침 / Privacy</a><a href="terms.html">이용약관 / Terms</a><a href="data-deletion.html">데이터 삭제 / Data deletion</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
+  <h2 id="contact">문의</h2>
+  <p>문의 및 지원: <a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></p>
+
+  <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="data-deletion.html">데이터 삭제</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
 </div>
 </body>
 </html>

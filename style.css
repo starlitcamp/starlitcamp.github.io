@@ -47,5 +47,21 @@ th{background:var(--panel)}
 .lang a{padding:4px 12px;border:1px solid var(--line);border-radius:99px;text-decoration:none;font-size:14px}
 footer{margin-top:56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:6px 18px}
 footer a{color:var(--muted)}
+[hidden]{display:none!important}
+.langbar{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:4px 14px;font-size:13px;margin:-14px 0 14px}
+.langbar a{color:var(--muted);text-decoration:none}
+.langbar a:hover{color:var(--text)}
+.langbar a[aria-current]{color:var(--text);font-weight:700}
+header.site nav{display:flex;flex-wrap:wrap;row-gap:4px}
+.card .alt{color:var(--muted);font-weight:400}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1a0f14;font-weight:700}
+.btn.primary:hover{background:#ffb27f;border-color:#ffb27f;color:#1a0f14}
+.callout{background:linear-gradient(135deg,#1d1424,#141631);border:1px solid #4a2f35;border-radius:18px;padding:4px 20px 8px;margin:36px 0 0}
+.callout h2{border-top:0;margin-top:14px;padding-top:0}
+.steps{counter-reset:step;list-style:none;padding:0;margin:16px 0}
+.steps>li{counter-increment:step;position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 58px;margin:0 0 10px}
+.steps>li::before{content:counter(step);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#1a0f14;font-weight:700;font-size:15px;line-height:28px;text-align:center}
+.steps b.t{display:block;color:var(--text);margin-bottom:2px}
+.steps .links{margin:10px 0 0}
 @media (max-width:620px){h1{font-size:27px}header.site{flex-direction:column;align-items:flex-start}header.site nav a{margin:0 16px 0 0}
-  .card{flex-direction:column;align-items:flex-start}.shots{grid-template-columns:repeat(3,1fr);gap:8px}.features{grid-template-columns:1fr}}
+  .card{flex-direction:column;align-items:flex-start}.langbar{justify-content:flex-start;margin-top:-16px}.steps>li{padding-left:52px}.steps>li::before{left:12px}.shots{grid-template-columns:repeat(3,1fr);gap:8px}.features{grid-template-columns:1fr}}
