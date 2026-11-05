@@ -214,7 +214,8 @@ UI = {
 
 GAMES = {
     "stellarbloom": dict(
-        page="stellarbloom.html", icon="img/stellarbloom_icon.jpg", feature="img/stellarbloom_feature.jpg", pixel=False, shots=[],
+        page="stellarbloom.html", icon="img/stellarbloom_icon.jpg", feature="img/stellarbloom_feature.jpg", pixel=False,
+        shots={l: [f"img/stellarbloom_{l}_{i}.jpg" for i in range(1, 7)] for l in ("ko", "en", "ja", "es")},
         name={"ko": "행성 키우기", "en": "Stellar Bloom", "ja": "Stellar Bloom", "es": "Stellar Bloom"},
         alt_name="Stellar Bloom",
         card={
@@ -241,7 +242,16 @@ GAMES = {
             "ja": "Stellar Bloom のキービジュアル：輝く降着円盤をまとったブラックホール",
             "es": "Imagen principal de Stellar Bloom: un agujero negro con un disco de acreción brillante",
         },
-        shot_alts={},
+        shot_alts={
+            "ko": ["부수고 삼켜서 더 크게: 서로 끌어당기고 합쳐지는 천체들", "삼킨 물질이 진화를 정한다: 고리를 두른 가스 거성", "별이 되고, 초거성이 되고: 적색 초거성과 쏟아지는 별가루",
+                   "모든 걸 삼키는 블랙홀", "마침내 은하가 되다", "실제 천문학 기반 도감: 토성"],
+            "en": ["Smash and swallow to grow: bodies pulling together and merging", "What you swallow decides your evolution: a ringed gas giant", "Become a star, then a supergiant: a red supergiant and a shower of stardust",
+                   "A black hole that swallows everything", "At last, a galaxy", "A codex grounded in real astronomy: Saturn"],
+            "ja": ["ぶつけて飲み込んで大きく：引き寄せ合い、合体する天体", "飲み込んだ物質が進化を決める：環をまとった巨大ガス惑星", "恒星になり、超巨星になる：赤色超巨星と降り注ぐ星くず",
+                   "すべてを飲み込むブラックホール", "ついに銀河へ", "本物の天文学にもとづく図鑑：土星"],
+            "es": ["Choca y absorbe para crecer: cuerpos que se atraen y se fusionan", "Lo que absorbes decide tu evolución: un gigante gaseoso con anillos", "Conviértete en estrella y luego en supergigante: una supergigante roja y una lluvia de polvo estelar",
+                   "Un agujero negro que lo traga todo", "Por fin, una galaxia", "Una enciclopedia basada en astronomía real: Saturno"],
+        },
         features={
             "ko": [("24가지 천체로 진화", "원시 행성, 슈퍼지구, 갈색왜성, 적색 초거성, 마그네타, 초대질량 블랙홀, 타원은하까지. 단계마다 Lv.1~5로 자라요."),
                    ("삼킨 물질이 운명을 정해요", "얼음, 가스, 중원소 중 무엇을 많이 삼켰는지에 따라 진화의 갈래가 달라져요."),
