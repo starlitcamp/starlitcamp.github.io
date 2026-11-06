@@ -326,7 +326,24 @@ def main():
             with open(p, "w", encoding="utf-8", newline="\n") as f:
                 f.write(s)
             written.append(os.path.relpath(p, ROOT))
-    print("built", len(written), "pages:", " ".join(written))
+    write_games_json()
+    print("built", len(written), "pages:", " ".join(written), "+ games.json")
+
+
+def write_games_json():
+    """games.json: the list the games show in their "Starlit Camp games" window (StarlitCampSDK StudioGames)."""
+    games = []
+    for key, g in GAMES.items():
+        c = CFG.get(key, {})
+        e = {"id": key, "android": c.get("package", ""), "ios": c.get("appStore", ""), "steam": int(c.get("steam", 0) or 0),
+             "status": c.get("status", "soon"), "page": g["page"], "icon": g["icon"], "pixel": bool(g.get("pixel"))}
+        for lang in LANGS:
+            e["name_" + lang] = g["name"][lang]
+            e["desc_" + lang] = g["desc"][lang]
+        games.append(e)
+    with open(os.path.join(ROOT, "games.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump({"games": games}, f, ensure_ascii=False, indent=2)
+        f.write("\n")
 
 
 if __name__ == "__main__":

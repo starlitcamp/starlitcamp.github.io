@@ -1,0 +1,40 @@
+{
+  "games": [
+    {
+      "id": "stellarbloom",
+      "android": "com.quasarlab.stellarbloom",
+      "ios": "",
+      "steam": 0,
+      "status": "testing",
+      "page": "stellarbloom.html",
+      "icon": "img/stellarbloom_icon.jpg",
+      "pixel": false,
+      "name_ko": "행성 키우기",
+      "desc_ko": "먼지 한 톨에서 은하까지! 부수고 삼켜서 진화하는 네온 우주 성장 게임",
+      "name_en": "Stellar Bloom",
+      "desc_en": "From a speck of dust to a galaxy! A neon space growth game where you smash, swallow and evolve.",
+      "name_ja": "Stellar Bloom",
+      "desc_ja": "ちりひと粒から銀河へ！ぶつけて飲み込んで進化する、ネオン宇宙の育成ゲーム",
+      "name_es": "Stellar Bloom",
+      "desc_es": "¡De una mota de polvo a una galaxia! Un juego espacial de estética neón: choca, absorbe y evoluciona."
+    },
+    {
+      "id": "wizardtower",
+      "android": "com.starlitcamp.wizardtower",
+      "ios": "",
+      "steam": 0,
+      "status": "recruiting",
+      "page": "wizardtower.html",
+      "icon": "img/wizardtower_icon.png",
+      "pixel": true,
+      "name_ko": "마법사의 탑",
+      "desc_ko": "마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG",
+      "name_en": "Wizard Tower",
+      "desc_en": "Climb a monster-filled tower and sweep away hordes with evolving spells. A pixel-art idle RPG.",
+      "name_ja": "Wizard Tower",
+      "desc_ja": "魔物の塔を一階ずつ登り、進化する魔法で大軍を一掃するドット絵放置RPG",
+      "name_es": "Wizard Tower",
+      "desc_es": "Sube una torre llena de monstruos y barre hordas con hechizos que evolucionan. Un RPG idle de pixel art."
+    }
+  ]
+}

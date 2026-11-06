@@ -4,3 +4,4 @@
 - 페이지는 `python3 _src/build.py` 로 생성합니다. 문구: `_src/strings.py`, 약관·방침 본문: `_src/legal/`.
 - 게임 상태(출시 준비 중 / 테스터 모집 / 비공개 테스트 / 출시)는 `games.js` 의 `status` 한 줄로 바꿉니다.
   사이트가 실행 중에 games.js 를 읽으므로 다시 빌드하지 않아도 바로 반영됩니다.
+- 게임 안 '스탈릿캠프 게임' 목록은 `games.json`(빌드가 strings.py·games.js 로 만든다)을 읽습니다. 게임을 추가하거나 상태를 바꾸면 `python3 _src/build.py` 로 다시 만들어 올려 주세요.
