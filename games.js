@@ -17,7 +17,7 @@ window.STARLIT_GAMES = /*CONFIG*/{
     "appStore": ""
   },
   "wizardtower": {
-    "status": "recruiting",
+    "status": "testing",
     "package": "com.starlitcamp.wizardtower",
     "group": "starlitcamp-testers",
     "appStore": ""
