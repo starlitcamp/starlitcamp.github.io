@@ -315,10 +315,10 @@ GAMES = {
             "es": "Imagen principal de Wizard Tower: monstruos avanzando hacia una torre bajo un cielo estrellado",
         },
         shot_alts={
-            "ko": ["일반 전투: 운석과 번개 마법이 마물 무리에 쏟아지는 장면", "대군 습격: 박쥐 폭풍 속에서 마법이 터지는 장면", "황금 고블린 이벤트 배너"],
-            "en": ["Regular battle: meteor and lightning spells raining down on a pack of monsters", "Horde raid: spells bursting through a storm of bats", "Golden Goblin event banner"],
-            "ja": ["通常バトル：魔物の群れに隕石と雷の魔法が降り注ぐ場面", "大軍襲来：コウモリの嵐の中で魔法がはじける場面", "黄金ゴブリンのイベントバナー"],
-            "es": ["Combate normal: meteoritos y rayos cayendo sobre un grupo de monstruos", "Ataque de horda: hechizos estallando en una tormenta de murciélagos", "Banner del evento del Goblin dorado"],
+            "ko": ["대군 습격: 운석이 떨어지고 쓰러진 마물에게서 금화가 쏟아지는 장면", "써클 승급: 6써클 마법사가 되며 새 마법이 열리는 순간", "마법 목록: 써클 순으로 정렬된 마법과 금화 아이콘"],
+            "en": ["Horde raid: a meteor strikes and defeated monsters burst into gold", "Circle up: becoming a 6th-circle wizard and unlocking a new spell", "Spell list: spells sorted by circle, with gold icons"],
+            "ja": ["大軍襲来：隕石が落ち、倒した魔物から金貨があふれ出す場面", "サークル昇格：6サークルの魔法使いになり新しい魔法が開く瞬間", "魔法リスト：サークル順に並んだ魔法と金貨アイコン"],
+            "es": ["Ataque de horda: cae un meteorito y los monstruos derrotados estallan en oro", "Subida de círculo: convertirse en mago del 6.º círculo y desbloquear un hechizo nuevo", "Lista de hechizos: ordenados por círculo, con iconos de oro"],
         },
         features={
             "ko": [("1써클에서 대마법사까지", "10층마다 길을 막는 수호자를 쓰러뜨리면 마법사의 써클이 올라가고, 써클마다 새로운 마법이 열려요. 불·얼음·번개·비전에 차원마다 바람·대지·빛·어둠이 깨어나 마법은 모두 25종."),

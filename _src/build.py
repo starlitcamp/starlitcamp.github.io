@@ -271,7 +271,7 @@ def build_game(lang, key):
 """
     shots = g["shots"][lang] if isinstance(g["shots"], dict) else g["shots"]   # localized store shots per language
     if shots:
-        imgs = "\n".join(f'    <img src="{u}{s}" alt="{esc(a)}" loading="lazy">' for s, a in zip(shots, g["shot_alts"][lang]))
+        imgs = "\n".join(f'    <img src="{u}{ver(s)}" alt="{esc(a)}" loading="lazy">' for s, a in zip(shots, g["shot_alts"][lang]))
         out += f'\n  <div class="shots{px}">\n{imgs}\n  </div>\n'
     feats = "\n".join(f"    <li><b>{a}</b>{b}</li>" for a, b in g["features"][lang])
     out += f"""
