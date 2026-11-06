@@ -8,6 +8,7 @@ Text: _src/strings.py and _src/legal/*.html. Game status: games.js
 (the live site reads games.js at runtime, so changing a status there takes
 effect without rebuilding; rebuilding only refreshes the no-JavaScript defaults).
 """
+import hashlib
 import html
 import json
 import os
@@ -96,6 +97,12 @@ AUTO_LANG_JS = (
 )
 
 
+def ver(name):
+    """?v=<내용 해시>: 파일이 바뀌면 주소가 바뀌어, 휴대폰 브라우저가 예전 games.js·site.js·style.css 를 캐시에서 쓰지 않는다."""
+    with open(os.path.join(ROOT, name), "rb") as f:
+        return name + "?v=" + hashlib.md5(f.read()).hexdigest()[:8]
+
+
 def head(lang, page, title, desc, og_image=None, extra=""):
     u = up(lang)
     alts = "\n".join(
@@ -119,9 +126,9 @@ def head(lang, page, title, desc, og_image=None, extra=""):
 {og}<link rel="canonical" href="{canonical}">
 {alts}
 <link rel="icon" href="{u}img/favicon.png" type="image/png">
-<link rel="stylesheet" href="{u}style.css">
-<script src="{u}games.js"></script>
-<script src="{u}site.js" defer></script>
+<link rel="stylesheet" href="{u}{ver('style.css')}">
+<script src="{u}{ver('games.js')}"></script>
+<script src="{u}{ver('site.js')}" defer></script>
 {extra}</head>
 <body>
 <div class="wrap">
