@@ -26,16 +26,19 @@
 
   <h1>Política de privacidad</h1>
   <p class="note">Esta página es una traducción del original en coreano. En caso de discrepancia, prevalecerá la versión en coreano. <a href="../privacy.html" data-setlang="ko" lang="ko">한국어 원문</a></p>
-  <p>Fecha de entrada en vigor: 2026-11-05 (versiones anteriores: 2026-10-21, 2026-10-15)</p>
+  <p>Fecha de entrada en vigor: 2026-11-06 (versiones anteriores: 2026-11-05, 2026-10-21, 2026-10-15)</p>
   <p>Se aplica a: Stellar Bloom (행성 키우기), Wizard Tower (마법사의 탑) y demás juegos para móviles publicados por Starlit Camp</p>
 
   <h2>1. Resumen</h2>
-  <p>Starlit Camp («nosotros») respeta tu privacidad y cumple la legislación aplicable, incluida la Ley de Protección de Información Personal de Corea, así como las políticas de Google Play. Nuestros juegos se pueden jugar sin cuenta ni inicio de sesión, y dentro del juego no recopilamos datos que te identifiquen directamente, como tu nombre, correo electrónico o número de teléfono.</p>
+  <p>Starlit Camp («nosotros») respeta tu privacidad y cumple la legislación aplicable, incluida la Ley de Protección de Información Personal de Corea, así como las políticas de Google Play. Nuestros juegos se pueden jugar sin cuenta ni inicio de sesión, y dentro del juego no recopilamos datos que te identifiquen directamente, como tu nombre, correo electrónico o número de teléfono. Para proteger tu progreso, el juego hace una copia de seguridad automática en la nube con un ID de cuenta aleatorio y, si quieres, puedes vincular una cuenta de Google Play Juegos para continuar en otro dispositivo.</p>
 
   <h2>2. Información que se trata y para qué</h2>
   <div class="tablewrap"><table>
     <tr><th>Información</th><th>Quién la trata</th><th>Finalidad</th></tr>
-    <tr><td>Progreso del juego (avance, ajustes, enciclopedia, etc.)</td><td>Solo se guarda en tu dispositivo</td><td>Guardar tu partida. No se envía a nuestros servidores.</td></tr>
+    <tr><td>Progreso del juego (avance, ajustes, enciclopedia, etc.)</td><td>Tu dispositivo, Google Firebase (Cloud Firestore, región de Seúl)</td><td>Guardar tu partida, copia de seguridad en la nube y paso a otro dispositivo. La copia en la nube registra también cuándo se guardó, el modelo del dispositivo y la versión de la app.</td></tr>
+    <tr><td>ID de cuenta del juego (un identificador generado al azar), identificador de la cuenta de Google Play Juegos vinculada</td><td>Google Firebase (Authentication)</td><td>Separar el guardado en la nube de cada jugador y cargar el mismo progreso en otro dispositivo con Play Juegos</td></tr>
+    <tr><td>Token de notificaciones push, suscripciones (idioma, plataforma, si aceptaste las notificaciones promocionales)</td><td>Google Firebase (Cloud Messaging)</td><td>Avisos y anuncios de mantenimiento y, solo si lo aceptas, notificaciones de eventos y recompensas (promocionales). Las promocionales se envían solo a quien las aceptó y, de noche (21:00 a 8:00), solo con un consentimiento aparte.</td></tr>
+    <tr><td>Si aceptaste las notificaciones promocionales y cuándo</td><td>Tu dispositivo</td><td>Guardar el registro del consentimiento, confirmarte tu elección y volver a preguntar cada dos años</td></tr>
     <tr><td>ID de publicidad (ID de publicidad de Android), información del dispositivo (modelo, sistema operativo, idioma), dirección IP, impresiones y clics en anuncios</td><td>Socios publicitarios (apartado 3)</td><td>Mostrar y medir anuncios, prevenir clics fraudulentos y fraude y, cuando se cumplen los requisitos de consentimiento y edad, mostrar anuncios personalizados</td></tr>
     <tr><td>Estadísticas de uso de la app (inicios, eventos de juego), informes de errores y bloqueos, información del dispositivo</td><td>Google Firebase</td><td>Mejorar el juego, ajustar el equilibrio y corregir errores</td></tr>
     <tr><td>Historial de compras integradas (producto, estado del pedido, token de compra)</td><td>Sistema de facturación de Google Play</td><td>Procesar las compras y entregar o restaurar los artículos comprados. Los datos de pago los gestiona Google y nunca se comparten con nosotros.</td></tr>
@@ -47,7 +50,7 @@
   <ul>
     <li>Unity LevelPlay y Unity Ads (Unity Technologies) - <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noopener">Política de privacidad</a></li>
     <li>Redes publicitarias conectadas a través de LevelPlay (p. ej., Google AdMob) - <a href="https://policies.google.com/technologies/ads" rel="noopener">Cómo usa Google los datos en la publicidad</a></li>
-    <li>Google Firebase (Analytics, Crashlytics) - <a href="https://firebase.google.com/support/privacy" rel="noopener">Privacidad y seguridad en Firebase</a></li>
+    <li>Google Firebase (Analytics, Crashlytics, Authentication, Cloud Firestore, Cloud Messaging, Remote Config) - <a href="https://firebase.google.com/support/privacy" rel="noopener">Privacidad y seguridad en Firebase</a></li>
     <li>Sistema de facturación de Google Play - <a href="https://policies.google.com/privacy" rel="noopener">Política de privacidad de Google</a></li>
   </ul>
   <p>Estos proveedores pueden tratar la información en servidores situados fuera de tu país, incluidos los Estados Unidos.</p>
@@ -63,13 +66,14 @@
 
   <h2>5. Tus opciones y derechos</h2>
   <ul>
+    <li>En Ajustes &gt; Eliminar cuenta del juego puedes borrar al instante tu guardado en la nube y tu cuenta del juego. Puedes desactivar las notificaciones promocionales en Ajustes cuando quieras.</li>
     <li>Puedes restablecer o eliminar tu ID de publicidad en Ajustes de Android &gt; Privacidad &gt; Anuncios para limitar los anuncios personalizados.</li>
     <li>Al desinstalar la app se eliminan todos los datos del juego guardados en tu dispositivo.</li>
     <li>Para solicitar el acceso, la rectificación, la supresión o la limitación del tratamiento, escríbenos a la dirección indicada abajo. Responderemos sin demora y, cuando sea necesario, trasladaremos la solicitud a los servicios de terceros correspondientes.</li>
   </ul>
 
   <h2>6. Conservación</h2>
-  <p>No conservamos información personal por nuestra cuenta. La conservación por parte de terceros sigue la política de cada proveedor; los datos de Firebase Analytics se conservan como máximo 14 meses.</p>
+  <p>No conservamos información personal por nuestra cuenta. La conservación por parte de terceros sigue la política de cada proveedor; los datos de Firebase Analytics se conservan como máximo 14 meses. Los guardados en la nube y las cuentas del juego se conservan hasta que elimines tu cuenta o nos lo pidas, y entonces se eliminan sin demora.</p>
 
   <h2>7. Seguridad</h2>
   <p>Las comunicaciones con los servicios de terceros se cifran (HTTPS) y mantenemos al mínimo la información que tratamos.</p>
