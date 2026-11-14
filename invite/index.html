@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>친구 초대 | Starlit Camp</title>
+<meta property="og:title" content="Starlit Camp 친구 초대">
+<meta property="og:description" content="친구가 게임에 초대했어요. 이 링크로 시작하면 선물을 받아요.">
+<meta property="og:image" content="https://starlitcamp.github.io/img/starlitcamp_header.png">
+<link rel="icon" href="../img/favicon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script src="../games.js"></script>
+<style>
+  .invite{max-width:560px;margin:0 auto}
+  .invite .gamehead{margin:28px 0 6px}
+  .invite .gamehead img{width:84px;height:84px;border-radius:20px}
+  .invite h1{font-size:26px}
+  .pixel img{image-rendering:pixelated}
+  .codebox{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:18px 0 6px}
+  .codebox .label{display:block;font-size:13px;color:var(--muted)}
+  .codebox .code{font:700 30px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;color:var(--text);user-select:all;-webkit-user-select:all}
+  .invite .btn{cursor:pointer;font:inherit;font-size:15px}
+  .invite .btn.big{display:block;width:100%;text-align:center;padding:14px 16px;font-size:17px;border-radius:16px;margin:14px 0 6px}
+  .invite .how{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:14px 0}
+  .invite .how p{margin:4px 0}
+  .invite [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="../"><img src="../img/starlitcamp_icon.png" alt="" style="image-rendering:pixelated;border-radius:8px"><span class="brand-name">Starlit Camp</span></a>
+  </header>
+
+  <main class="invite">
+    <div class="gamehead" id="head" hidden>
+      <img id="icon" alt="">
+      <div>
+        <h1 id="title"></h1>
+        <p class="sub" id="lead"></p>
+      </div>
+    </div>
+
+    <div id="withCode" hidden>
+      <div class="codebox">
+        <div><span class="label" id="codeLabel"></span><span class="code" id="code"></span></div>
+        <button class="btn" id="copy" type="button"></button>
+      </div>
+
+      <div id="android" hidden>
+        <a class="btn primary big" id="play" rel="noopener"></a>
+        <p class="note" id="playNote"></p>
+      </div>
+
+      <div id="ios" hidden>
+        <a class="btn primary big" id="appstore" rel="noopener"></a>
+        <p class="note" id="iosNote"></p>
+      </div>
+      <p class="note" id="iosSoon" hidden></p>
+      <p class="note" id="desktop" hidden></p>
+
+      <div class="how" id="testing" hidden>
+        <p id="testingText"></p>
+        <p><a id="testingLink"></a></p>
+      </div>
+
+      <div class="how">
+        <p id="installed"></p>
+      </div>
+    </div>
+
+    <div id="noCode" hidden>
+      <h1 id="badTitle"></h1>
+      <p id="badText"></p>
+      <div class="links"><a class="btn primary" id="home" href="../"></a></div>
+    </div>
+  </main>
+
+  <footer><span>&copy; 2026 Starlit Camp</span><a href="../privacy.html" id="fPrivacy"></a><a href="../terms.html" id="fTerms"></a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
+</div>
+
+<script>
+/* Starlit Camp invite page: /invite/?g=<game id>&c=<8-character code>
+   Android: Google Play with the code as install referrer (the game reads it on its first start).
+   iOS and the rest: the code with a Copy button (the game's invite window has Paste). Nothing is sent anywhere. */
+(function () {
+  var T = {
+    ko: {
+      page: "친구 초대 | Starlit Camp", title: "친구가 {game}에 초대했어요", lead: "아래 초대 코드로 게임을 시작하면 선물을 받아요.",
+      codeLabel: "초대 코드", copy: "코드 복사", copied: "복사했어요",
+      play: "Google Play에서 받기", playNote: "이 버튼으로 설치하면 초대 코드가 자동으로 들어가요. 게임을 처음 실행하면 선물을 받아요.",
+      appstore: "코드 복사하고 App Store 열기", iosNote: "설치한 뒤 게임의 설정 > 친구 초대에서 '붙여넣기'를 눌러 주세요.",
+      iosSoon: "iPhone, iPad 버전은 준비 중이에요.", desktop: "휴대폰에서 이 페이지를 열면 바로 설치할 수 있어요.",
+      testing: "지금은 비공개 테스트 중이라, 테스터로 참여한 Google 계정만 설치할 수 있어요.", testingLink: "테스트 참여 방법 보기",
+      installed: "이미 설치했나요? 게임의 설정 > 친구 초대에서 위 코드를 넣으면 돼요. 코드는 게임을 처음 시작하고 며칠 동안만 쓸 수 있어요.",
+      badTitle: "초대 링크를 다시 확인해 주세요", badText: "초대 코드를 읽을 수 없어요. 친구에게 링크를 다시 받아 보세요.", home: "Starlit Camp 게임 보기",
+      privacy: "개인정보처리방침", terms: "이용약관"
+    },
+    en: {
+      page: "Friend invite | Starlit Camp", title: "A friend invited you to {game}", lead: "Start the game with the invite code below and get a gift.",
+      codeLabel: "Invite code", copy: "Copy code", copied: "Copied",
+      play: "Get it on Google Play", playNote: "Installing with this button carries the invite code along. You get the gift the first time you start the game.",
+      appstore: "Copy the code and open the App Store", iosNote: "After installing, open Settings > Invite friends in the game and tap Paste.",
+      iosSoon: "The iPhone and iPad version is on its way.", desktop: "Open this page on your phone to install right away.",
+      testing: "The game is in closed testing for now, so only Google accounts that joined the test can install it.", testingLink: "How to join the test",
+      installed: "Already installed? Enter the code above in the game under Settings > Invite friends. A code can be used only during the first days after you start playing.",
+      badTitle: "Please check the invite link", badText: "The invite code couldn't be read. Ask your friend to send the link again.", home: "See Starlit Camp games",
+      privacy: "Privacy Policy", terms: "Terms of Service"
+    },
+    ja: {
+      page: "友達招待 | Starlit Camp", title: "友達が{game}に招待しました", lead: "下の招待コードでゲームを始めるとプレゼントがもらえます。",
+      codeLabel: "招待コード", copy: "コードをコピー", copied: "コピーしました",
+      play: "Google Play で手に入れよう", playNote: "このボタンからインストールすると招待コードが自動で入力されます。ゲームを初めて起動したときにプレゼントが届きます。",
+      appstore: "コードをコピーして App Store を開く", iosNote: "インストール後、ゲームの設定 > 友達を招待 で「貼り付け」を押してください。",
+      iosSoon: "iPhone・iPad 版は準備中です。", desktop: "スマートフォンでこのページを開くと、すぐにインストールできます。",
+      testing: "現在はクローズドテスト中のため、テストに参加した Google アカウントだけがインストールできます。", testingLink: "テストへの参加方法",
+      installed: "すでにインストール済みですか？ゲームの設定 > 友達を招待 で上のコードを入力してください。コードはゲームを始めてから数日間だけ使えます。",
+      badTitle: "招待リンクをご確認ください", badText: "招待コードを読み取れませんでした。友達にリンクをもう一度送ってもらってください。", home: "Starlit Camp のゲームを見る",
+      privacy: "プライバシーポリシー", terms: "利用規約"
+    },
+    es: {
+      page: "Invitación | Starlit Camp", title: "Un amigo te invitó a {game}", lead: "Empieza el juego con este código de invitación y recibe un regalo.",
+      codeLabel: "Código de invitación", copy: "Copiar código", copied: "Copiado",
+      play: "Disponible en Google Play", playNote: "Si instalas con este botón, el código de invitación se aplica solo. Recibes el regalo la primera vez que abres el juego.",
+      appstore: "Copiar el código y abrir App Store", iosNote: "Después de instalar, abre Ajustes > Invitar amigos en el juego y toca Pegar.",
+      iosSoon: "La versión para iPhone y iPad está en camino.", desktop: "Abre esta página en tu teléfono para instalar al instante.",
+      testing: "Por ahora el juego está en prueba cerrada: solo pueden instalarlo las cuentas de Google que se unieron a la prueba.", testingLink: "Cómo unirse a la prueba",
+      installed: "¿Ya lo instalaste? Introduce el código de arriba en el juego, en Ajustes > Invitar amigos. El código solo se puede usar durante los primeros días de juego.",
+      badTitle: "Revisa el enlace de invitación", badText: "No se pudo leer el código de invitación. Pide a tu amigo que te envíe el enlace otra vez.", home: "Ver los juegos de Starlit Camp",
+      privacy: "Política de privacidad", terms: "Términos de servicio"
+    }
+  };
+
+  var langs = ["ko", "en", "ja", "es"], lang = null;
+  try { lang = localStorage.getItem("sc_lang"); } catch (e) {}
+  if (langs.indexOf(lang) < 0) {
+    lang = null;
+    var prefs = navigator.languages || [navigator.language || ""];
+    for (var i = 0; i < prefs.length && !lang; i++) {
+      var two = String(prefs[i]).slice(0, 2).toLowerCase();
+      if (langs.indexOf(two) >= 0) lang = two;
+    }
+    lang = lang || "en";
+  }
+  var S = T[lang];
+  document.documentElement.lang = lang;
+  document.title = S.page;
+
+  function $(id) { return document.getElementById(id); }
+  function text(id, s) { $(id).textContent = s; }
+  function show(id) { $(id).hidden = false; }
+
+  var q = new URLSearchParams(location.search);
+  var gameId = String(q.get("g") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+  var code = String(q.get("c") || "").toUpperCase().replace(/[\s-]/g, "");
+  var valid = /^[A-HJ-NP-Z2-9]{8}$/.test(code);
+  var game = (window.STARLIT_GAMES || {})[gameId];
+  var prefix = lang === "ko" ? "../" : "../" + lang + "/";
+
+  text("fPrivacy", S.privacy); $("fPrivacy").href = prefix + "privacy.html";
+  text("fTerms", S.terms); $("fTerms").href = prefix + "terms.html";
+
+  if (!valid || !game) {
+    text("badTitle", S.badTitle); text("badText", S.badText); text("home", S.home);
+    $("home").href = lang === "ko" ? "../" : "../" + lang + "/";
+    show("noCode");
+    return;
+  }
+
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIos = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+
+  function copyCode(done) {
+    function ok() { if (done) done(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(code).then(ok, fallback); return; }
+    fallback();
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = code; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      ok();
+    }
+  }
+
+  function fill(name, icon, pixel, page) {
+    text("title", S.title.replace("{game}", name));
+    text("lead", S.lead);
+    if (icon) { $("icon").src = "../" + icon; $("icon").alt = name; if (pixel) $("head").className += " pixel"; }
+    else $("icon").hidden = true;
+    show("head");
+
+    text("codeLabel", S.codeLabel);
+    text("code", code.slice(0, 4) + " " + code.slice(4));
+    var copy = $("copy");
+    copy.textContent = S.copy;
+    copy.addEventListener("click", function () { copyCode(function () { copy.textContent = S.copied; setTimeout(function () { copy.textContent = S.copy; }, 2000); }); });
+
+    var referrer = "invite=" + code + "&utm_source=invite&utm_medium=friend";
+    var playUrl = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(game.package) + "&referrer=" + encodeURIComponent(referrer);
+    var play = $("play"); play.href = playUrl; play.textContent = S.play; text("playNote", S.playNote);
+    var store = $("appstore");
+    if (game.appStore) {
+      store.href = game.appStore; store.textContent = S.appstore; text("iosNote", S.iosNote);
+      store.addEventListener("click", function (e) { e.preventDefault(); copyCode(function () { location.href = game.appStore; }); });
+    }
+
+    if (isAndroid) show("android");
+    else if (isIos) { if (game.appStore) show("ios"); else { text("iosSoon", S.iosSoon); show("iosSoon"); } }
+    else { show("android"); if (game.appStore) show("ios"); text("desktop", S.desktop); show("desktop"); }
+
+    if (game.status !== "released" && (isAndroid || !isIos)) {
+      text("testingText", S.testing);
+      var link = $("testingLink"); link.textContent = S.testingLink; link.href = prefix + (page || "") + "#join";
+      if (page && (game.status === "testing" || game.status === "recruiting")) show("testing");
+    }
+    text("installed", S.installed);
+    show("withCode");
+  }
+
+  // names and icons come from games.json (the same list the games read); the page still works without it
+  var filled = false;
+  function fromList(list) {
+    if (filled) return;
+    filled = true;
+    var g = null;
+    for (var i = 0; list && i < list.length; i++) if (list[i].id === gameId) g = list[i];
+    if (!g) { fill(gameId, "", false, ""); return; }
+    fill(g["name_" + lang] || g.name_en || g.name_ko || gameId, g.icon, !!g.pixel, g.page);
+  }
+  try {
+    fetch("../games.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (j) { fromList(j.games); }, function () { fromList(null); });
+    setTimeout(function () { fromList(null); }, 4000);
+  } catch (e) { fromList(null); }
+})();
+</script>
+</body>
+</html>
