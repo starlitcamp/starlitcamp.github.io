@@ -15,9 +15,9 @@
 <link rel="alternate" hreflang="es" href="https://starlitcamp.github.io/es/wizardtower.html">
 <link rel="alternate" hreflang="x-default" href="https://starlitcamp.github.io/wizardtower.html">
 <link rel="icon" href="../img/favicon.png" type="image/png">
-<link rel="stylesheet" href="../style.css?v=f428c64b">
-<script src="../games.js?v=f9d8c156"></script>
-<script src="../site.js?v=f7109cfc" defer></script>
+<link rel="stylesheet" href="../style.css?v=3e47c7cb">
+<script src="../games.js?v=07b890b1"></script>
+<script src="../site.js?v=73e1cd5f" defer></script>
 <style>.pixel img{image-rendering:pixelated}</style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     <img src="../img/wizardtower_icon.png" alt="Wizard Tower">
     <div>
       <h1>Wizard Tower</h1>
-      <p class="sub">Android · <span data-game="wizardtower" data-when="soon" hidden>リリース準備中</span><span data-game="wizardtower" data-when="recruiting" hidden>テスター募集中</span><span data-game="wizardtower" data-when="testing">クローズドテスト中</span><span data-game="wizardtower" data-when="released" hidden>Google Play で配信中</span></p>
+      <p class="sub"><span class="tags"><span class="tag android" data-game="wizardtower" data-when="soon recruiting testing released">Android · <span data-game="wizardtower" data-when="soon" hidden>リリース準備中</span><span data-game="wizardtower" data-when="recruiting" hidden>テスター募集中</span><span data-game="wizardtower" data-when="testing">クローズドテスト中</span><span data-game="wizardtower" data-when="released" hidden>Google Play で配信中</span></span><span class="tag ios" data-game="wizardtower" data-plat="ios" data-when="soon testing released">iOS · <span data-game="wizardtower" data-plat="ios" data-when="soon">配信準備中</span><span data-game="wizardtower" data-plat="ios" data-when="testing" hidden>TestFlight テスト中</span><span data-game="wizardtower" data-plat="ios" data-when="released" hidden>App Store で配信中</span></span><span class="tag steam" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>Steam · <span data-game="wizardtower" data-plat="steam" data-when="dev" hidden>開発中</span><span data-game="wizardtower" data-plat="steam" data-when="soon" hidden>リリース準備中</span><span data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>ウィッシュリスト受付中</span><span data-game="wizardtower" data-plat="steam" data-when="demo" hidden>体験版配信中</span><span data-game="wizardtower" data-plat="steam" data-when="released" hidden>配信中</span></span></span></p>
     </div>
   </div>
   <div class="hero pixel"><img src="../img/wizardtower_feature.png" alt="Wizard Tower のキービジュアル：星空の下、塔へと押し寄せる魔物たち"></div>
@@ -41,6 +41,11 @@
   <div class="links">
     <a class="btn primary" data-game="wizardtower" data-when="recruiting testing" href="#join">テストの参加方法を見る</a>
     <span data-game="wizardtower" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play で手に入れよう</a></span>
+    <span data-game="wizardtower" data-plat="ios" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store からダウンロード</a></span>
+    <a class="btn" data-game="wizardtower" data-plat="ios" data-when="testing" hidden href="#ios">iPhone テストの参加方法</a>
+    <span data-game="wizardtower" data-plat="steam" data-when="wishlist soon" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam でウィッシュリストに追加</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="demo" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam 体験版を入手</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam で入手</a></span>
   </div>
 
   <div class="shots pixel">
@@ -62,7 +67,7 @@
 
   <section id="join" class="join">
     <div data-game="wizardtower" data-when="testing">
-      <h2>クローズドテストに参加する</h2>
+      <h2>Android 版クローズドテストに参加する <span class="plat">Google Play</span></h2>
       <p>Wizard Tower は現在 Google Play でクローズドテスト中です。次の4ステップで、どなたでも参加できます。</p>
     <ol class="steps">
       <li><b class="t">テスターグループに参加</b>Play ストアで使っている Google アカウントでログインし、Google グループ <b>Starlit Camp Testers</b> で<b>［グループに参加］</b>を押してください。<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">グループに参加する</a></div></li>
@@ -70,27 +75,76 @@
       <li><b class="t">Google Play からインストール</b>参加登録が済んだら、Google Play のストアページからゲームをインストールしてください。スマートフォンの Play ストアアプリで検索してもかまいません。<div class="links"><a class="btn" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play で手に入れよう</a></div></li>
       <li><b class="t">14日間インストールしたまま感想を送る</b>正式リリースのため、テスターの皆さまには<b>14日以上</b>アプリをインストールしたままにしていただく必要があります。ときどき遊んで、不具合やアイデアをメールまたは Play ストアの非公開フィードバックで送っていただけると大変助かります。<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5BWizard%20Tower%5D%20%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89%E3%83%90%E3%83%83%E3%82%AF">フィードバックを送る</a></div></li>
     </ol>
-      <p class="note">※ Android 専用です。グループへの参加、テストへの参加登録、インストールには、すべて同じ Google アカウントをお使いください。テスト期間中はゲームの内容やバランスが変わることがあります。</p>
+      <p class="note">※ Google Play のクローズドテストのため、Android 端末でのみ参加できます。グループへの参加、テストへの参加登録、インストールには、すべて同じ Google アカウントをお使いください。テスト期間中はゲームの内容やバランスが変わることがあります。</p>
     </div>
     <div data-game="wizardtower" data-when="recruiting" hidden>
-      <h2>クローズドテスターを募集中</h2>
+      <h2>Android 版クローズドテスターを募集中 <span class="plat">Google Play</span></h2>
       <p>Wizard Tower のリリース前クローズドテストを準備しています。いまテスターグループに参加しておくと、テスト開始と同時に参加できます。</p>
     <ol class="steps">
       <li><b class="t">テスターグループに参加</b>Play ストアで使っている Google アカウントでログインし、Google グループ <b>Starlit Camp Testers</b> で<b>［グループに参加］</b>を押してください。<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">グループに参加する</a></div></li>
       <li><b class="t">テスト開始のお知らせを待つ</b>テストが始まると、このページに参加リンクとインストール方法が掲載され、グループでもお知らせします。</li>
       <li><b class="t">14日間インストールしたまま感想を送る</b>テストが始まったらインストールして14日以上そのままにし、遊んだ感想を聞かせてください。</li>
     </ol>
-      <p class="note">※ Android 専用です。Play ストアで使っている Google アカウントで参加してください。</p>
+      <p class="note">※ Google Play のテストのため Android 端末が必要です。Play ストアで使っている Google アカウントで参加してください。</p>
     </div>
     <div data-game="wizardtower" data-when="released" hidden>
-      <h2>今すぐプレイ</h2>
+      <h2>Android でプレイ <span class="plat">Google Play</span></h2>
       <p>Wizard Tower は Google Play で無料配信中です。</p>
-      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play で手に入れよう</a><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store からダウンロード</a></div>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play で手に入れよう</a></div>
       <p class="note">クローズドテストにご参加いただいた皆さま、ありがとうございました。</p>
     </div>
     <div data-game="wizardtower" data-when="soon" hidden>
-      <h2>リリース準備中</h2>
+      <h2>Android 版リリース準備中 <span class="plat">Google Play</span></h2>
       <p>Wizard Tower のリリースに向けて準備しています。最新情報はこのページでお知らせします。</p>
+    </div>
+  </section>
+  <section id="ios" class="join" data-game="wizardtower" data-plat="ios" data-when="soon testing released">
+    <div data-game="wizardtower" data-plat="ios" data-when="soon">
+      <h2>iPhone・iPad 版 <span class="plat">App Store</span></h2>
+      <p>Wizard Tower の iPhone・iPad 版も、Android 版と同時配信に向けて準備しています。配信が始まると、このページに App Store ボタンが表示されます。</p>
+      <p class="note">※ Google または Apple アカウントを連携すると、Android と iPhone・iPad で同じ進行データを引き継げます。購入はプラットフォームごとに適用されます。</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="testing" hidden>
+      <h2>iPhone・iPad 版のテストに参加する <span class="plat">TestFlight</span></h2>
+      <p>Wizard Tower の iPhone・iPad 版を Apple の TestFlight でいち早く遊べます。</p>
+    <ol class="steps">
+      <li><b class="t">TestFlight をインストール</b>iPhone または iPad の App Store から、Apple の TestFlight アプリをインストールしてください。<div class="links"><a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">TestFlight を入手</a></div></li>
+      <li><b class="t">テストに参加</b>同じ端末で公開リンクを開き、<b>［承認］</b>、<b>［インストール］</b>の順に押してください。<div class="links"><a class="btn primary" data-game="wizardtower" data-href="testflight" href="#" rel="noopener" hidden>TestFlight 公開リンク</a></div></li>
+      <li><b class="t">感想を送る</b>TestFlight アプリからスクリーンショット付きでフィードバックを送るか、メールでお知らせください。<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5BWizard%20Tower%5D%20%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89%E3%83%90%E3%83%83%E3%82%AF">フィードバックを送る</a></div></li>
+    </ol>
+      <p class="note">※ Google または Apple アカウントを連携すると、Android と iPhone・iPad で同じ進行データを引き継げます。購入はプラットフォームごとに適用されます。</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="released" hidden>
+      <h2>iPhone・iPad でプレイ</h2>
+      <p>Wizard Tower は App Store で無料配信中です。</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store からダウンロード</a></div>
+      <p class="note">※ Google または Apple アカウントを連携すると、Android と iPhone・iPad で同じ進行データを引き継げます。購入はプラットフォームごとに適用されます。</p>
+    </div>
+  </section>
+  <section id="steam" class="join" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>
+    <div data-game="wizardtower" data-plat="steam" data-when="dev" hidden>
+      <h2>PC 版を開発中 <span class="plat">Steam</span></h2>
+      <p>Wizard Tower は PC（Steam）でのリリースを目指して開発中です。Steam のストアページが公開されたら、ここからすぐにウィッシュリストに追加できるようにお知らせします。</p>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="soon" hidden>
+      <h2>Steam でリリース準備中</h2>
+      <p>Wizard Tower の Steam リリースに向けて準備しています。</p>
+      <div class="links"><a class="btn" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam ページ</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>
+      <h2>Steam でウィッシュリストに追加</h2>
+      <p>Wizard Tower の Steam ストアページが公開されました。ウィッシュリストに追加しておくと、リリース時に Steam からお知らせが届きます。</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam でウィッシュリストに追加</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="demo" hidden>
+      <h2>Steam 体験版</h2>
+      <p>Wizard Tower の体験版を Steam で無料でプレイできます。気に入ったらウィッシュリストにも追加してください。</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam 体験版を入手</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="released" hidden>
+      <h2>Steam でプレイ</h2>
+      <p>Wizard Tower は Steam で配信中です。</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam で入手</a></div>
     </div>
   </section>
 
@@ -101,7 +155,7 @@
     <a class="btn" href="terms.html">利用規約</a>
     <a class="btn" href="data-deletion.html">データ削除のご依頼</a>
   </div>
-  <p class="note">※ 基本プレイ無料で、広告とアプリ内課金（広告削除・プレミアム・使い魔ギルド）が含まれます。アカウントなしですぐに遊べ、GoogleまたはAppleアカウントを連携すると進行データをクラウドに保存できます。iOS 版（広告のみ、アプリ内課金なし）は配信準備中です。</p>
+  <p class="note">※ 基本プレイ無料で、広告とアプリ内課金（広告削除・プレミアム・使い魔ギルド）が含まれます。アカウントなしですぐに遊べ、GoogleまたはAppleアカウントを連携すると進行データをクラウドに保存し、Android と iPhone・iPad で続きから遊べます。現在 iOS 版はアプリ内課金なし、広告のみです。</p>
 
   <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">プライバシーポリシー</a><a href="terms.html">利用規約</a><a href="data-deletion.html">データ削除</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
 </div>

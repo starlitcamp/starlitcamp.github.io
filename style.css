@@ -66,3 +66,13 @@ header.site nav{display:flex;flex-wrap:wrap;row-gap:4px}
 .steps .links{margin:10px 0 0}
 @media (max-width:620px){h1{font-size:27px}header.site{flex-direction:column;align-items:flex-start}header.site nav a{margin:0 16px 0 0}
   .card{flex-direction:column;align-items:flex-start}.langbar{justify-content:flex-start;margin-top:-16px}.steps>li{padding-left:52px}.steps>li::before{left:12px}.shots{grid-template-columns:repeat(3,1fr);gap:8px}.features{grid-template-columns:1fr}}
+.tags{display:inline-flex;flex-wrap:wrap;gap:4px 6px;vertical-align:middle}
+.tags .tag{margin-left:0}
+.tag.ios{color:#9fd0ff;background:#17202e;border-color:#2b3f5a}
+.tag.steam{color:#b9c8ff;background:#191c30;border-color:#363d66}
+.gamehead .sub .tags{margin-left:4px}
+.shots.wide{grid-template-columns:repeat(2,1fr)}
+.join h2 .plat{color:var(--muted);font-weight:400;font-size:16px;margin-left:6px}
+@media (max-width:620px){.shots.wide{grid-template-columns:1fr}}
+.join h2 .plat{white-space:nowrap}
+.shots.wide img:last-child:nth-child(odd){grid-column:1/-1}

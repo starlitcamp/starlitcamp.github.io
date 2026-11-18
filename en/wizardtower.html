@@ -15,9 +15,9 @@
 <link rel="alternate" hreflang="es" href="https://starlitcamp.github.io/es/wizardtower.html">
 <link rel="alternate" hreflang="x-default" href="https://starlitcamp.github.io/wizardtower.html">
 <link rel="icon" href="../img/favicon.png" type="image/png">
-<link rel="stylesheet" href="../style.css?v=f428c64b">
-<script src="../games.js?v=f9d8c156"></script>
-<script src="../site.js?v=f7109cfc" defer></script>
+<link rel="stylesheet" href="../style.css?v=3e47c7cb">
+<script src="../games.js?v=07b890b1"></script>
+<script src="../site.js?v=73e1cd5f" defer></script>
 <style>.pixel img{image-rendering:pixelated}</style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     <img src="../img/wizardtower_icon.png" alt="Wizard Tower">
     <div>
       <h1>Wizard Tower</h1>
-      <p class="sub">Android · <span data-game="wizardtower" data-when="soon" hidden>Coming soon</span><span data-game="wizardtower" data-when="recruiting" hidden>Recruiting testers</span><span data-game="wizardtower" data-when="testing">Closed testing</span><span data-game="wizardtower" data-when="released" hidden>Out now on Google Play</span></p>
+      <p class="sub"><span class="tags"><span class="tag android" data-game="wizardtower" data-when="soon recruiting testing released">Android · <span data-game="wizardtower" data-when="soon" hidden>Coming soon</span><span data-game="wizardtower" data-when="recruiting" hidden>Recruiting testers</span><span data-game="wizardtower" data-when="testing">Closed testing</span><span data-game="wizardtower" data-when="released" hidden>Out now on Google Play</span></span><span class="tag ios" data-game="wizardtower" data-plat="ios" data-when="soon testing released">iOS · <span data-game="wizardtower" data-plat="ios" data-when="soon">Coming soon</span><span data-game="wizardtower" data-plat="ios" data-when="testing" hidden>TestFlight beta</span><span data-game="wizardtower" data-plat="ios" data-when="released" hidden>Out now on the App Store</span></span><span class="tag steam" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>Steam · <span data-game="wizardtower" data-plat="steam" data-when="dev" hidden>In development</span><span data-game="wizardtower" data-plat="steam" data-when="soon" hidden>Coming soon</span><span data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>Wishlist now</span><span data-game="wizardtower" data-plat="steam" data-when="demo" hidden>Demo available</span><span data-game="wizardtower" data-plat="steam" data-when="released" hidden>Out now</span></span></span></p>
     </div>
   </div>
   <div class="hero pixel"><img src="../img/wizardtower_feature.png" alt="Wizard Tower key art: monsters swarming toward a tower under a starry sky"></div>
@@ -41,6 +41,11 @@
   <div class="links">
     <a class="btn primary" data-game="wizardtower" data-when="recruiting testing" href="#join">How to join the test</a>
     <span data-game="wizardtower" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Get it on Google Play</a></span>
+    <span data-game="wizardtower" data-plat="ios" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>Download on the App Store</a></span>
+    <a class="btn" data-game="wizardtower" data-plat="ios" data-when="testing" hidden href="#ios">How to join the iPhone beta</a>
+    <span data-game="wizardtower" data-plat="steam" data-when="wishlist soon" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Wishlist on Steam</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="demo" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Get the Steam demo</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Get it on Steam</a></span>
   </div>
 
   <div class="shots pixel">
@@ -62,7 +67,7 @@
 
   <section id="join" class="join">
     <div data-game="wizardtower" data-when="testing">
-      <h2>Join the closed test</h2>
+      <h2>Join the Android closed test <span class="plat">Google Play</span></h2>
       <p>Wizard Tower is in closed testing on Google Play. Anyone can join in four steps:</p>
     <ol class="steps">
       <li><b class="t">Join the tester group</b>Sign in with the Google account you use on the Play Store, open the Google Group <b>Starlit Camp Testers</b> and click <b>Join group</b>.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">Join the group</a></div></li>
@@ -70,27 +75,76 @@
       <li><b class="t">Install from Google Play</b>Once you've opted in, install the game from its Google Play page. You can also search for it in the Play Store app on your phone.<div class="links"><a class="btn" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Get it on Google Play</a></div></li>
       <li><b class="t">Keep it for 14 days and send feedback</b>To qualify for public release, testers need to keep the app installed for <b>at least 14 days</b>. Play now and then, and send us bugs or ideas by email or through private feedback on the Play Store. It helps a lot.<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5BWizard%20Tower%5D%20Test%20feedback">Send feedback</a></div></li>
     </ol>
-      <p class="note">※ Android only. Use the same Google account to join the group, opt in and install. Content and balance may change during the test.</p>
+      <p class="note">※ This is a Google Play test, so it needs an Android device. Use the same Google account to join the group, opt in and install. Content and balance may change during the test.</p>
     </div>
     <div data-game="wizardtower" data-when="recruiting" hidden>
-      <h2>We're recruiting testers</h2>
+      <h2>We're recruiting Android testers <span class="plat">Google Play</span></h2>
       <p>We're preparing a closed test of Wizard Tower ahead of launch. Join the tester group now and you can take part as soon as the test opens.</p>
     <ol class="steps">
       <li><b class="t">Join the tester group</b>Sign in with the Google account you use on the Play Store, open the Google Group <b>Starlit Camp Testers</b> and click <b>Join group</b>.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">Join the group</a></div></li>
       <li><b class="t">Wait for the test to open</b>When the test opens, the test link and install steps will appear on this page, and we'll announce it in the group too.</li>
       <li><b class="t">Keep it for 14 days and send feedback</b>Once it opens, install the game, keep it for at least 14 days, play and tell us what you think.</li>
     </ol>
-      <p class="note">※ Android only. Please join with the Google account you use on the Play Store.</p>
+      <p class="note">※ This is a Google Play test, so it needs an Android device. Please join with the Google account you use on the Play Store.</p>
     </div>
     <div data-game="wizardtower" data-when="released" hidden>
-      <h2>Play now</h2>
+      <h2>Play on Android <span class="plat">Google Play</span></h2>
       <p>Wizard Tower is free on Google Play.</p>
-      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Get it on Google Play</a><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>Download on the App Store</a></div>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Get it on Google Play</a></div>
       <p class="note">Thank you to everyone who took part in the closed test!</p>
     </div>
     <div data-game="wizardtower" data-when="soon" hidden>
-      <h2>Coming soon</h2>
+      <h2>Coming soon to Android <span class="plat">Google Play</span></h2>
       <p>We're getting Wizard Tower ready for launch. News will be posted on this page.</p>
+    </div>
+  </section>
+  <section id="ios" class="join" data-game="wizardtower" data-plat="ios" data-when="soon testing released">
+    <div data-game="wizardtower" data-plat="ios" data-when="soon">
+      <h2>iPhone & iPad <span class="plat">App Store</span></h2>
+      <p>The iPhone and iPad version of Wizard Tower is being prepared to launch alongside Android. When it's out, an App Store button will appear here.</p>
+      <p class="note">※ Link a Google or Apple account to carry the same progress between Android and iPhone/iPad. Purchases apply per platform.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="testing" hidden>
+      <h2>Join the iPhone & iPad beta <span class="plat">TestFlight</span></h2>
+      <p>You can play the iPhone and iPad version of Wizard Tower early through Apple TestFlight.</p>
+    <ol class="steps">
+      <li><b class="t">Install TestFlight</b>Install Apple's TestFlight app from the App Store on your iPhone or iPad.<div class="links"><a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">Get TestFlight</a></div></li>
+      <li><b class="t">Join the beta</b>Open the public link on the same device and tap <b>Accept</b>, then <b>Install</b>.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="testflight" href="#" rel="noopener" hidden>TestFlight public link</a></div></li>
+      <li><b class="t">Send feedback</b>Send feedback with screenshots from the TestFlight app, or email us.<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5BWizard%20Tower%5D%20Test%20feedback">Send feedback</a></div></li>
+    </ol>
+      <p class="note">※ Link a Google or Apple account to carry the same progress between Android and iPhone/iPad. Purchases apply per platform.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="released" hidden>
+      <h2>Play on iPhone & iPad</h2>
+      <p>Wizard Tower is free on the App Store.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>Download on the App Store</a></div>
+      <p class="note">※ Link a Google or Apple account to carry the same progress between Android and iPhone/iPad. Purchases apply per platform.</p>
+    </div>
+  </section>
+  <section id="steam" class="join" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>
+    <div data-game="wizardtower" data-plat="steam" data-when="dev" hidden>
+      <h2>PC version in development <span class="plat">Steam</span></h2>
+      <p>Wizard Tower is being developed for release on PC (Steam). Once the Steam store page is up, you'll be able to wishlist it right from here.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="soon" hidden>
+      <h2>Coming to Steam</h2>
+      <p>We're getting Wizard Tower ready for its Steam release.</p>
+      <div class="links"><a class="btn" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam page</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>
+      <h2>Wishlist on Steam</h2>
+      <p>The Steam store page for Wizard Tower is live. Add it to your wishlist and Steam will let you know when it launches.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Wishlist on Steam</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="demo" hidden>
+      <h2>Steam demo</h2>
+      <p>Play the free Wizard Tower demo on Steam. If you enjoy it, please add the game to your wishlist too.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Get the Steam demo</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="released" hidden>
+      <h2>Play on Steam</h2>
+      <p>Wizard Tower is out now on Steam.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Get it on Steam</a></div>
     </div>
   </section>
 
@@ -101,7 +155,7 @@
     <a class="btn" href="terms.html">Terms of Service</a>
     <a class="btn" href="data-deletion.html">Data deletion</a>
   </div>
-  <p class="note">※ Free to play, with ads and in-app purchases (ad removal, Premium, Familiar Guild). Play right away with no account, or link a Google or Apple account to save your progress to the cloud. The iOS version (ads only, no in-app purchases) is coming soon.</p>
+  <p class="note">※ Free to play, with ads and in-app purchases (ad removal, Premium, Familiar Guild). Play right away with no account, or link a Google or Apple account to save your progress to the cloud and continue on Android or iPhone/iPad. For now, the iOS version has ads only, with no in-app purchases.</p>
 
   <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Data deletion</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
 </div>

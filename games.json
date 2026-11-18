@@ -6,6 +6,8 @@
       "ios": "",
       "steam": 0,
       "status": "testing",
+      "status_ios": "soon",
+      "status_steam": "",
       "page": "stellarbloom.html",
       "icon": "img/stellarbloom_icon.jpg",
       "pixel": false,
@@ -24,6 +26,8 @@
       "ios": "",
       "steam": 0,
       "status": "testing",
+      "status_ios": "soon",
+      "status_steam": "",
       "page": "wizardtower.html",
       "icon": "img/wizardtower_icon.png",
       "pixel": true,
@@ -35,6 +39,26 @@
       "desc_ja": "魔物の塔を一階ずつ登り、進化する魔法で大軍を一掃するドット絵放置RPG",
       "name_es": "Wizard Tower",
       "desc_es": "Sube una torre llena de monstruos y barre hordas con hechizos que evolucionan. Un RPG idle de pixel art."
+    },
+    {
+      "id": "starspire",
+      "android": "",
+      "ios": "",
+      "steam": 0,
+      "status": "soon",
+      "status_ios": "",
+      "status_steam": "dev",
+      "page": "starspire.html",
+      "icon": "img/starspire_icon.png",
+      "pixel": true,
+      "name_ko": "스타스파이어",
+      "desc_ko": "커서로 자원을 모으고 마물을 막으며 마법사의 탑을 별까지 쌓는 도트 방치형 게임",
+      "name_en": "StarSpire",
+      "desc_en": "Gather resources with your cursor, fend off monsters and build a wizard's tower to the stars. A pixel-art incremental game.",
+      "name_ja": "StarSpire",
+      "desc_ja": "カーソルで資源を集め、魔物を防ぎながら魔法使いの塔を星まで積み上げるドット絵放置ゲーム",
+      "name_es": "StarSpire",
+      "desc_es": "Recoge recursos con el cursor, frena a los monstruos y levanta la torre de un mago hasta las estrellas. Un juego incremental de pixel art."
     }
   ]
 }

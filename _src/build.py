@@ -4,9 +4,10 @@
     python3 _src/build.py
 
 Korean pages go to the site root, the others to en/, ja/ and es/.
-Text: _src/strings.py and _src/legal/*.html. Game status: games.js
-(the live site reads games.js at runtime, so changing a status there takes
-effect without rebuilding; rebuilding only refreshes the no-JavaScript defaults).
+Text: _src/strings.py and _src/legal/*.html. Game status per platform
+(Android "status", "ios", "steam"): games.js (the live site reads games.js at
+runtime, so changing a status there takes effect without rebuilding; rebuilding
+only refreshes the no-JavaScript defaults and games.json).
 """
 import hashlib
 import html
@@ -22,9 +23,15 @@ sys.path.insert(0, HERE)
 from strings import LANGS, LANG_NAMES, GROUP_NAME, EMAIL, UI, GAMES  # noqa: E402
 
 SITE = "https://starlitcamp.github.io/"
-PAGES = ["index.html", "stellarbloom.html", "wizardtower.html", "privacy.html", "terms.html", "data-deletion.html"]
-AUTO_LANG_PAGES = {"index.html", "stellarbloom.html", "wizardtower.html"}
-STATUSES = ["soon", "recruiting", "testing", "released"]
+PAGES = ["index.html", "stellarbloom.html", "wizardtower.html", "starspire.html", "privacy.html", "terms.html", "data-deletion.html"]
+AUTO_LANG_PAGES = {"index.html", "stellarbloom.html", "wizardtower.html", "starspire.html"}
+STATUSES = ["soon", "recruiting", "testing", "released"]          # Android (games.js "status")
+PLATS = {                                                          # platform -> statuses ("" = not on that platform)
+    "android": STATUSES,
+    "ios": ["soon", "testing", "released"],
+    "steam": ["dev", "soon", "wishlist", "demo", "released"],
+}
+PLAT_LABEL = {"android": "Android", "ios": "iOS", "steam": "Steam"}
 
 
 def load_config():
@@ -32,8 +39,14 @@ def load_config():
     m = re.search(r"/\*CONFIG\*/(.*?)/\*END\*/", src, re.S)
     cfg = json.loads(m.group(1))
     for k, v in cfg.items():
-        assert v["status"] in STATUSES, (k, v["status"])
+        for plat, ok in PLATS.items():
+            assert stat(v, plat) in [""] + ok, (k, plat, stat(v, plat))
     return cfg
+
+
+def stat(g, plat):
+    """A game's status on one platform ("" = not on that platform)."""
+    return (g.get("status") if plat == "android" else g.get(plat)) or ""
 
 
 CFG = load_config()
@@ -64,18 +77,22 @@ def link_between(src_lang, dst_lang, page):
 
 def url_of(game, kind):
     g = CFG[game]
+    pkg, app = g.get("package") or "", int(g.get("steamAppId") or 0)
     return {
-        "group": "https://groups.google.com/g/" + g["group"],
-        "optin": "https://play.google.com/apps/testing/" + g["package"],
-        "store": "https://play.google.com/store/apps/details?id=" + g["package"],
+        "group": "https://groups.google.com/g/" + g["group"] if g.get("group") else "",
+        "optin": "https://play.google.com/apps/testing/" + pkg if pkg else "",
+        "store": "https://play.google.com/store/apps/details?id=" + pkg if pkg else "",
         "appstore": g.get("appStore") or "",
+        "testflight": g.get("testFlight") or "",
+        "steam": f"https://store.steampowered.com/app/{app}/" if app else "",
     }[kind]
 
 
-def when(game, statuses):
-    """Attributes for a block shown only while `game` has one of `statuses`."""
-    hidden = "" if CFG[game]["status"] in statuses else " hidden"
-    return f' data-game="{game}" data-when="{" ".join(statuses)}"{hidden}'
+def when(game, statuses, plat="android"):
+    """Attributes for a block shown only while `game` has one of `statuses` on `plat`."""
+    hidden = "" if stat(CFG[game], plat) in statuses else " hidden"
+    p = "" if plat == "android" else f' data-plat="{plat}"'
+    return f' data-game="{game}"{p} data-when="{" ".join(statuses)}"{hidden}'
 
 
 def ahref(game, kind, label, cls="btn"):
@@ -161,9 +178,19 @@ def footer(lang):
 """
 
 
-def status_spans(lang, game, prefix=""):
+def status_spans(lang, game, plat="android"):
     t = UI[lang]
-    return "".join(f'<span{when(game, [s])}>{prefix}{t["st_" + s]}</span>' for s in STATUSES)
+    key = "st_" if plat == "android" else plat + "_"
+    return "".join(f'<span{when(game, [s], plat)}>{t[key + s]}</span>' for s in PLATS[plat])
+
+
+def plat_tags(lang, game):
+    """One tag per platform the game is on, e.g. "Android · 비공개 테스트 중" "iOS · 출시 준비 중" (games.js decides which show)."""
+    out = "".join(
+        f'<span class="tag {plat}"{when(game, PLATS[plat], plat)}>{PLAT_LABEL[plat]} · {status_spans(lang, game, plat)}</span>'
+        for plat in PLATS
+    )
+    return f'<span class="tags">{out}</span>'
 
 
 # ---------------------------------------------------------------- home
@@ -186,7 +213,7 @@ def build_index(lang):
         out += f"""  <a class="card" href="{g['page']}">
     <img class="icon" src="{u}{g['icon']}" alt="{esc(name)}"{px}>
     <div>
-      <h3>{esc(name)} <span class="alt">{esc(sub)}</span> <span class="tag">{status_spans(lang, key, "Android · ")}</span></h3>
+      <h3>{esc(name)} <span class="alt">{esc(sub)}</span> {plat_tags(lang, key)}</h3>
       <p>{g['card'][lang]}</p>
     </div>
   </a>
@@ -236,10 +263,34 @@ def join_section(lang, key):
                   + step(t["j4_t"], t["r3_d"])
                   + f'    </ol>\n      <p class="note">{t["j_rec_note"]}</p>\n    </div>\n')
     released = (f'    <div{when(key, ["released"])}>\n      <h2>{t["j_rel_h"]}</h2>\n      <p>{t["j_rel_p"].format(name=esc(name))}</p>\n'
-                f'      <div class="links">{ahref(key, "store", t["b_play"], "btn primary")}{ahref(key, "appstore", t["b_appstore"], "btn primary")}</div>\n'
+                f'      <div class="links">{ahref(key, "store", t["b_play"], "btn primary")}</div>\n'
                 f'      <p class="note">{t["j_rel_thanks"]}</p>\n    </div>\n')
     soon = (f'    <div{when(key, ["soon"])}>\n      <h2>{t["j_soon_h"]}</h2>\n      <p>{t["j_soon_p"].format(name=esc(name))}</p>\n    </div>\n')
-    return f'  <section id="join" class="join">\n{testing}{recruiting}{released}{soon}  </section>\n'
+    android = f'  <section id="join" class="join">\n{testing}{recruiting}{released}{soon}  </section>\n'
+
+    def block(plat, s, h, p, buttons="", note="", steps=""):
+        links = f'      <div class="links">{buttons}</div>\n' if buttons else ""
+        n = f'      <p class="note">{note}</p>\n' if note else ""
+        return (f'    <div{when(key, [s], plat)}>\n      <h2>{h}</h2>\n      <p>{p.format(name=esc(name))}</p>\n'
+                f'{steps}{links}{n}    </div>\n')
+
+    ios = (block("ios", "soon", t["ios_soon_h"], t["ios_soon_p"], note=t["ios_note"])
+           + block("ios", "testing", t["ios_test_h"], t["ios_test_p"], note=t["ios_note"], steps=(
+               '    <ol class="steps">\n'
+               + step(t["tf1_t"], t["tf1_d"], f'<a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">{t["tf1_b"]}</a>')
+               + step(t["tf2_t"], t["tf2_d"], ahref(key, "testflight", t["tf2_b"], "btn primary"))
+               + step(t["tf3_t"], t["tf3_d"], f'<a class="btn" href="{esc(fb)}">{t["j4_b"]}</a>')
+               + '    </ol>\n'))
+           + block("ios", "released", t["ios_rel_h"], t["ios_rel_p"], ahref(key, "appstore", t["b_appstore"], "btn primary"), t["ios_note"]))
+    ios = f'  <section id="ios" class="join"{when(key, PLATS["ios"], "ios")}>\n{ios}  </section>\n'
+
+    steam = (block("steam", "dev", t["steam_dev_h"], t["steam_dev_p"])
+             + block("steam", "soon", t["steam_soon_h"], t["steam_soon_p"], ahref(key, "steam", t["b_steam_page"], "btn"))
+             + block("steam", "wishlist", t["steam_wish_h"], t["steam_wish_p"], ahref(key, "steam", t["b_steam_wish"], "btn primary"))
+             + block("steam", "demo", t["steam_demo_h"], t["steam_demo_p"], ahref(key, "steam", t["b_steam_demo"], "btn primary"))
+             + block("steam", "released", t["steam_rel_h"], t["steam_rel_p"], ahref(key, "steam", t["b_steam"], "btn primary")))
+    steam = f'  <section id="steam" class="join"{when(key, PLATS["steam"], "steam")}>\n{steam}  </section>\n'
+    return android + ios + steam
 
 
 def build_game(lang, key):
@@ -252,13 +303,13 @@ def build_game(lang, key):
     out = head(lang, g["page"], title, g["desc"][lang], g["feature"], extra)
     out += header(lang, g["page"])
     px = " pixel" if g["pixel"] else ""
-    sub = (g["alt_name"] + " · ") if lang == "ko" else ""
+    sub = g["alt_name"] if lang == "ko" else ""
     out += f"""
   <div class="gamehead{px}">
     <img src="{u}{g['icon']}" alt="{esc(name)}">
     <div>
       <h1>{esc(name)}</h1>
-      <p class="sub">{sub}Android · {status_spans(lang, key)}</p>
+      <p class="sub">{esc(sub.rstrip(" ·"))}{plat_tags(lang, key)}</p>
     </div>
   </div>
   <div class="hero{px}"><img src="{u}{g['feature']}" alt="{esc(g['hero_alt'][lang])}"></div>
@@ -267,12 +318,18 @@ def build_game(lang, key):
   <div class="links">
     <a class="btn primary"{when(key, ["recruiting", "testing"])} href="#join">{t['cta_join']}</a>
     <span{when(key, ["released"])}>{ahref(key, "store", t["b_play"], "btn primary")}</span>
+    <span{when(key, ["released"], "ios")}>{ahref(key, "appstore", t["b_appstore"], "btn primary")}</span>
+    <a class="btn"{when(key, ["testing"], "ios")} href="#ios">{t['cta_testflight']}</a>
+    <span{when(key, ["wishlist", "soon"], "steam")}>{ahref(key, "steam", t["b_steam_wish"], "btn primary")}</span>
+    <span{when(key, ["demo"], "steam")}>{ahref(key, "steam", t["b_steam_demo"], "btn primary")}</span>
+    <span{when(key, ["released"], "steam")}>{ahref(key, "steam", t["b_steam"], "btn primary")}</span>
   </div>
 """
     shots = g["shots"][lang] if isinstance(g["shots"], dict) else g["shots"]   # localized store shots per language
     if shots:
         imgs = "\n".join(f'    <img src="{u}{ver(s)}" alt="{esc(a)}" loading="lazy">' for s, a in zip(shots, g["shot_alts"][lang]))
-        out += f'\n  <div class="shots{px}">\n{imgs}\n  </div>\n'
+        wide = " wide" if g.get("landscape") else ""
+        out += f'\n  <div class="shots{px}{wide}">\n{imgs}\n  </div>\n'
     feats = "\n".join(f"    <li><b>{a}</b>{b}</li>" for a, b in g["features"][lang])
     out += f"""
   <h2>{t['features_h2']}</h2>
@@ -342,8 +399,16 @@ def write_games_json():
     games = []
     for key, g in GAMES.items():
         c = CFG.get(key, {})
-        e = {"id": key, "android": c.get("package", ""), "ios": c.get("appStore", ""), "steam": int(c.get("steam", 0) or 0),
-             "status": c.get("status", "soon"), "page": g["page"], "icon": g["icon"], "pixel": bool(g.get("pixel"))}
+        # StarlitCampSDK StudioGames reads: android (Play package), ios (App Store address, only once released there),
+        # steam (app ID, once the store page is public), status (Android status; Steam-only games: released or soon).
+        andro, ios, st = stat(c, "android"), stat(c, "ios"), stat(c, "steam")
+        e = {"id": key,
+             "android": (c.get("package") or "") if andro else "",
+             "ios": (c.get("appStore") or "") if ios == "released" else "",
+             "steam": int(c.get("steamAppId") or 0) if st in ("wishlist", "demo", "released") else 0,
+             "status": andro or ("released" if st == "released" else "soon"),
+             "status_ios": ios, "status_steam": st,
+             "page": g["page"], "icon": g["icon"], "pixel": bool(g.get("pixel"))}
         for lang in LANGS:
             e["name_" + lang] = g["name"][lang]
             e["desc_" + lang] = g["desc"][lang]

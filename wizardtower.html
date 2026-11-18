@@ -16,9 +16,9 @@
 <link rel="alternate" hreflang="es" href="https://starlitcamp.github.io/es/wizardtower.html">
 <link rel="alternate" hreflang="x-default" href="https://starlitcamp.github.io/wizardtower.html">
 <link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="stylesheet" href="style.css?v=f428c64b">
-<script src="games.js?v=f9d8c156"></script>
-<script src="site.js?v=f7109cfc" defer></script>
+<link rel="stylesheet" href="style.css?v=3e47c7cb">
+<script src="games.js?v=07b890b1"></script>
+<script src="site.js?v=73e1cd5f" defer></script>
 <style>.pixel img{image-rendering:pixelated}</style>
 </head>
 <body>
@@ -33,7 +33,7 @@
     <img src="img/wizardtower_icon.png" alt="마법사의 탑">
     <div>
       <h1>마법사의 탑</h1>
-      <p class="sub">Wizard Tower · Android · <span data-game="wizardtower" data-when="soon" hidden>출시 준비 중</span><span data-game="wizardtower" data-when="recruiting" hidden>테스터 모집 중</span><span data-game="wizardtower" data-when="testing">비공개 테스트 중</span><span data-game="wizardtower" data-when="released" hidden>Google Play 출시</span></p>
+      <p class="sub">Wizard Tower<span class="tags"><span class="tag android" data-game="wizardtower" data-when="soon recruiting testing released">Android · <span data-game="wizardtower" data-when="soon" hidden>출시 준비 중</span><span data-game="wizardtower" data-when="recruiting" hidden>테스터 모집 중</span><span data-game="wizardtower" data-when="testing">비공개 테스트 중</span><span data-game="wizardtower" data-when="released" hidden>Google Play 출시</span></span><span class="tag ios" data-game="wizardtower" data-plat="ios" data-when="soon testing released">iOS · <span data-game="wizardtower" data-plat="ios" data-when="soon">출시 준비 중</span><span data-game="wizardtower" data-plat="ios" data-when="testing" hidden>TestFlight 테스트 중</span><span data-game="wizardtower" data-plat="ios" data-when="released" hidden>App Store 출시</span></span><span class="tag steam" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>Steam · <span data-game="wizardtower" data-plat="steam" data-when="dev" hidden>개발 중</span><span data-game="wizardtower" data-plat="steam" data-when="soon" hidden>출시 준비 중</span><span data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>찜하기 가능</span><span data-game="wizardtower" data-plat="steam" data-when="demo" hidden>체험판 공개</span><span data-game="wizardtower" data-plat="steam" data-when="released" hidden>출시</span></span></span></p>
     </div>
   </div>
   <div class="hero pixel"><img src="img/wizardtower_feature.png" alt="마법사의 탑 대표 이미지: 별밤 아래 탑을 향해 몰려오는 마물들"></div>
@@ -42,6 +42,11 @@
   <div class="links">
     <a class="btn primary" data-game="wizardtower" data-when="recruiting testing" href="#join">테스트 참여 방법 보기</a>
     <span data-game="wizardtower" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a></span>
+    <span data-game="wizardtower" data-plat="ios" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store에서 받기</a></span>
+    <a class="btn" data-game="wizardtower" data-plat="ios" data-when="testing" hidden href="#ios">iPhone 테스트 참여 방법</a>
+    <span data-game="wizardtower" data-plat="steam" data-when="wishlist soon" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam에서 찜하기</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="demo" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam 체험판 받기</a></span>
+    <span data-game="wizardtower" data-plat="steam" data-when="released" hidden><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam에서 받기</a></span>
   </div>
 
   <div class="shots pixel">
@@ -63,7 +68,7 @@
 
   <section id="join" class="join">
     <div data-game="wizardtower" data-when="testing">
-      <h2>비공개 테스트 참여하기</h2>
+      <h2>Android 비공개 테스트 참여하기 <span class="plat">Google Play</span></h2>
       <p>마법사의 탑 비공개 테스트가 Google Play에서 진행 중이에요. 아래 순서대로 누구나 참여할 수 있어요.</p>
     <ol class="steps">
       <li><b class="t">테스터 그룹 가입</b>Play 스토어에서 쓰는 Google 계정으로 로그인한 뒤, Google 그룹 <b>Starlit Camp Testers</b>에서 <b>그룹 가입</b>을 눌러 주세요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">테스터 그룹 가입하기</a></div></li>
@@ -71,27 +76,76 @@
       <li><b class="t">Google Play에서 설치</b>참여 신청이 끝나면 Google Play 스토어 페이지에서 게임을 설치하세요. 휴대폰의 Play 스토어 앱에서 검색해도 돼요.<div class="links"><a class="btn" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a></div></li>
       <li><b class="t">14일간 유지하고 의견 보내기</b>정식 출시를 위해 테스터분들이 <b>14일 이상</b> 앱을 설치한 상태로 유지해 주셔야 해요. 가끔 플레이하면서 버그나 아이디어를 메일이나 Play 스토어의 비공개 의견으로 보내 주시면 큰 도움이 돼요.<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5B%EB%A7%88%EB%B2%95%EC%82%AC%EC%9D%98%20%ED%83%91%5D%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a></div></li>
     </ol>
-      <p class="note">※ Android 전용이에요. 그룹 가입, 테스트 참여 신청, 설치에는 모두 같은 Google 계정을 써 주세요. 테스트 중에는 게임 내용과 밸런스가 바뀔 수 있어요.</p>
+      <p class="note">※ Google Play 비공개 테스트라 Android 기기에서만 참여할 수 있어요. 그룹 가입, 테스트 참여 신청, 설치에는 모두 같은 Google 계정을 써 주세요. 테스트 중에는 게임 내용과 밸런스가 바뀔 수 있어요.</p>
     </div>
     <div data-game="wizardtower" data-when="recruiting" hidden>
-      <h2>비공개 테스터 모집</h2>
+      <h2>Android 비공개 테스터 모집 <span class="plat">Google Play</span></h2>
       <p>마법사의 탑 출시 전 비공개 테스트를 준비하고 있어요. 테스터 그룹에 미리 가입해 두시면 테스트가 열리는 대로 바로 참여할 수 있어요.</p>
     <ol class="steps">
       <li><b class="t">테스터 그룹 가입</b>Play 스토어에서 쓰는 Google 계정으로 로그인한 뒤, Google 그룹 <b>Starlit Camp Testers</b>에서 <b>그룹 가입</b>을 눌러 주세요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="group" href="https://groups.google.com/g/starlitcamp-testers" rel="noopener">테스터 그룹 가입하기</a></div></li>
       <li><b class="t">테스트 오픈 안내 받기</b>테스트가 열리면 이 페이지에 참여 링크와 설치 방법이 올라오고, 그룹 공지로도 알려 드려요.</li>
       <li><b class="t">14일간 유지하고 의견 보내기</b>테스트가 열리면 설치 후 14일 이상 유지하면서 플레이하고 의견을 들려주세요.</li>
     </ol>
-      <p class="note">※ Android 전용이에요. Play 스토어에서 쓰는 Google 계정으로 가입해 주세요.</p>
+      <p class="note">※ Google Play 테스트라 Android 기기가 필요해요. Play 스토어에서 쓰는 Google 계정으로 가입해 주세요.</p>
     </div>
     <div data-game="wizardtower" data-when="released" hidden>
-      <h2>지금 플레이하기</h2>
+      <h2>Android에서 플레이하기 <span class="plat">Google Play</span></h2>
       <p>마법사의 탑, 지금 Google Play에서 무료로 받아 보세요.</p>
-      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store에서 받기</a></div>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="store" href="https://play.google.com/store/apps/details?id=com.starlitcamp.wizardtower" rel="noopener">Google Play에서 받기</a></div>
       <p class="note">비공개 테스트에 참여해 주신 모든 분께 감사드립니다.</p>
     </div>
     <div data-game="wizardtower" data-when="soon" hidden>
-      <h2>출시 준비 중</h2>
+      <h2>Android 출시 준비 중 <span class="plat">Google Play</span></h2>
       <p>마법사의 탑 출시를 준비하고 있어요. 소식은 이 페이지에서 알려 드릴게요.</p>
+    </div>
+  </section>
+  <section id="ios" class="join" data-game="wizardtower" data-plat="ios" data-when="soon testing released">
+    <div data-game="wizardtower" data-plat="ios" data-when="soon">
+      <h2>iPhone·iPad 버전 <span class="plat">App Store</span></h2>
+      <p>마법사의 탑 iPhone·iPad 버전도 Android와 함께 출시를 준비하고 있어요. 출시되면 이 페이지에 App Store 버튼이 생겨요.</p>
+      <p class="note">※ Google 또는 Apple 계정을 연결하면 Android와 iPhone·iPad에서 같은 진행을 이어 할 수 있어요. 구매는 플랫폼마다 따로 적용돼요.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="testing" hidden>
+      <h2>iPhone·iPad 테스트 참여하기 <span class="plat">TestFlight</span></h2>
+      <p>마법사의 탑 iPhone·iPad 버전을 Apple TestFlight로 먼저 플레이할 수 있어요.</p>
+    <ol class="steps">
+      <li><b class="t">TestFlight 앱 설치</b>iPhone이나 iPad의 App Store에서 Apple의 TestFlight 앱을 설치하세요.<div class="links"><a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">TestFlight 받기</a></div></li>
+      <li><b class="t">테스트 참여</b>같은 기기에서 공개 링크를 열고 <b>수락</b>, <b>설치</b>를 차례로 눌러 주세요.<div class="links"><a class="btn primary" data-game="wizardtower" data-href="testflight" href="#" rel="noopener" hidden>TestFlight 공개 링크</a></div></li>
+      <li><b class="t">의견 보내기</b>TestFlight 앱에서 스크린샷과 함께 피드백을 보내거나 메일로 알려 주세요.<div class="links"><a class="btn" href="mailto:starlitcampgames@gmail.com?subject=%5B%EB%A7%88%EB%B2%95%EC%82%AC%EC%9D%98%20%ED%83%91%5D%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a></div></li>
+    </ol>
+      <p class="note">※ Google 또는 Apple 계정을 연결하면 Android와 iPhone·iPad에서 같은 진행을 이어 할 수 있어요. 구매는 플랫폼마다 따로 적용돼요.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="ios" data-when="released" hidden>
+      <h2>iPhone·iPad에서 플레이하기</h2>
+      <p>마법사의 탑, 지금 App Store에서 무료로 받아 보세요.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="appstore" href="#" rel="noopener" hidden>App Store에서 받기</a></div>
+      <p class="note">※ Google 또는 Apple 계정을 연결하면 Android와 iPhone·iPad에서 같은 진행을 이어 할 수 있어요. 구매는 플랫폼마다 따로 적용돼요.</p>
+    </div>
+  </section>
+  <section id="steam" class="join" data-game="wizardtower" data-plat="steam" data-when="dev soon wishlist demo released" hidden>
+    <div data-game="wizardtower" data-plat="steam" data-when="dev" hidden>
+      <h2>PC 버전 개발 중 <span class="plat">Steam</span></h2>
+      <p>마법사의 탑, PC(Steam) 출시를 목표로 개발하고 있어요. Steam 스토어 페이지가 열리면 이곳에서 바로 찜할 수 있게 알려 드릴게요.</p>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="soon" hidden>
+      <h2>Steam 출시 준비 중</h2>
+      <p>마법사의 탑 Steam 출시를 준비하고 있어요.</p>
+      <div class="links"><a class="btn" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam 페이지</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="wishlist" hidden>
+      <h2>Steam에서 찜하기</h2>
+      <p>마법사의 탑 Steam 스토어 페이지가 열렸어요. 찜 목록에 추가해 두시면 출시될 때 Steam이 알려 드려요.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam에서 찜하기</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="demo" hidden>
+      <h2>Steam 체험판</h2>
+      <p>마법사의 탑 체험판을 Steam에서 무료로 플레이할 수 있어요. 마음에 드셨다면 찜 목록에도 추가해 주세요.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam 체험판 받기</a></div>
+    </div>
+    <div data-game="wizardtower" data-plat="steam" data-when="released" hidden>
+      <h2>Steam에서 플레이하기</h2>
+      <p>마법사의 탑, 지금 Steam에서 만나 보세요.</p>
+      <div class="links"><a class="btn primary" data-game="wizardtower" data-href="steam" href="#" rel="noopener" hidden>Steam에서 받기</a></div>
     </div>
   </section>
 
@@ -102,7 +156,7 @@
     <a class="btn" href="terms.html">이용약관</a>
     <a class="btn" href="data-deletion.html">데이터 삭제 요청</a>
   </div>
-  <p class="note">※ 무료 게임이며 광고와 인앱 구매(광고 제거·프리미엄·사역마 길드)가 포함되어 있습니다. 계정 없이 바로 즐길 수 있고, 원하면 Google 또는 Apple 계정을 연결해 진행을 클라우드에 저장할 수 있습니다. iOS 버전(광고만, 인앱 구매 없음)은 출시 준비 중입니다.</p>
+  <p class="note">※ 무료 게임이며 광고와 인앱 구매(광고 제거·프리미엄·사역마 길드)가 포함되어 있습니다. 계정 없이 바로 즐길 수 있고, 원하면 Google 또는 Apple 계정을 연결해 진행을 클라우드에 저장하고 Android와 iPhone·iPad에서 이어 할 수 있습니다. 지금 iOS 버전은 인앱 구매 없이 광고만 있습니다.</p>
 
   <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="data-deletion.html">데이터 삭제</a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
 </div>
