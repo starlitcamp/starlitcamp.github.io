@@ -25,6 +25,8 @@
   .invite .how{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:14px 0}
   .invite .how p{margin:4px 0}
   .invite [hidden]{display:none!important}
+  .invite .badge.big{display:block;width:max-content;margin:16px auto 6px}
+  .invite .badge.big img{height:56px}
 </style>
 </head>
 <body>
@@ -49,12 +51,12 @@
       </div>
 
       <div id="android" hidden>
-        <a class="btn primary big" id="play" rel="noopener"></a>
+        <a class="badge big googleplay" id="play" rel="noopener"><img id="playImg" alt="" height="56"></a>
         <p class="note" id="playNote"></p>
       </div>
 
       <div id="ios" hidden>
-        <a class="btn primary big" id="appstore" rel="noopener"></a>
+        <a class="badge big appstore" id="appstore" rel="noopener"><img id="appstoreImg" alt="" height="56"></a>
         <p class="note" id="iosNote"></p>
       </div>
       <p class="note" id="iosSoon" hidden></p>
@@ -78,6 +80,7 @@
   </main>
 
   <footer><span>&copy; 2026 Starlit Camp</span><a href="../privacy.html" id="fPrivacy"></a><a href="../terms.html" id="fTerms"></a><a href="mailto:starlitcampgames@gmail.com">starlitcampgames@gmail.com</a></footer>
+  <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC. Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
 </div>
 
 <script>
@@ -89,8 +92,8 @@
     ko: {
       page: "친구 초대 | Starlit Camp", title: "친구가 {game}에 초대했어요", lead: "아래 초대 코드로 게임을 시작하면 선물을 받아요.",
       codeLabel: "초대 코드", copy: "코드 복사", copied: "복사했어요",
-      play: "Google Play에서 받기", playNote: "이 버튼으로 설치하면 초대 코드가 자동으로 들어가요. 게임을 처음 실행하면 선물을 받아요.",
-      appstore: "코드 복사하고 App Store 열기", iosNote: "설치한 뒤 게임의 설정 > 친구 초대에서 '붙여넣기'를 눌러 주세요.",
+      play: "Google Play에서 받기", playNote: "이 배지로 설치하면 초대 코드가 자동으로 들어가요. 게임을 처음 실행하면 선물을 받아요.",
+      appstore: "코드 복사하고 App Store 열기", iosNote: "배지를 누르면 초대 코드가 복사되고 App Store가 열려요. 설치한 뒤 게임의 설정 > 친구 초대에서 '붙여넣기'를 눌러 주세요.",
       iosSoon: "iPhone, iPad 버전은 준비 중이에요.", desktop: "휴대폰에서 이 페이지를 열면 바로 설치할 수 있어요.",
       testing: "지금은 비공개 테스트 중이라, 테스터로 참여한 Google 계정만 설치할 수 있어요.", testingLink: "테스트 참여 방법 보기",
       installed: "이미 설치했나요? 게임의 설정 > 친구 초대에서 위 코드를 넣으면 돼요. 코드는 게임을 처음 시작하고 며칠 동안만 쓸 수 있어요.",
@@ -100,8 +103,8 @@
     en: {
       page: "Friend invite | Starlit Camp", title: "A friend invited you to {game}", lead: "Start the game with the invite code below and get a gift.",
       codeLabel: "Invite code", copy: "Copy code", copied: "Copied",
-      play: "Get it on Google Play", playNote: "Installing with this button carries the invite code along. You get the gift the first time you start the game.",
-      appstore: "Copy the code and open the App Store", iosNote: "After installing, open Settings > Invite friends in the game and tap Paste.",
+      play: "Get it on Google Play", playNote: "Installing with this badge carries the invite code along. You get the gift the first time you start the game.",
+      appstore: "Copy the code and open the App Store", iosNote: "Tapping the badge copies the invite code and opens the App Store. After installing, open Settings > Invite friends in the game and tap Paste.",
       iosSoon: "The iPhone and iPad version is on its way.", desktop: "Open this page on your phone to install right away.",
       testing: "The game is in closed testing for now, so only Google accounts that joined the test can install it.", testingLink: "How to join the test",
       installed: "Already installed? Enter the code above in the game under Settings > Invite friends. A code can be used only during the first days after you start playing.",
@@ -111,8 +114,8 @@
     ja: {
       page: "友達招待 | Starlit Camp", title: "友達が{game}に招待しました", lead: "下の招待コードでゲームを始めるとプレゼントがもらえます。",
       codeLabel: "招待コード", copy: "コードをコピー", copied: "コピーしました",
-      play: "Google Play で手に入れよう", playNote: "このボタンからインストールすると招待コードが自動で入力されます。ゲームを初めて起動したときにプレゼントが届きます。",
-      appstore: "コードをコピーして App Store を開く", iosNote: "インストール後、ゲームの設定 > 友達を招待 で「貼り付け」を押してください。",
+      play: "Google Play で手に入れよう", playNote: "このバッジからインストールすると招待コードが自動で入力されます。ゲームを初めて起動したときにプレゼントが届きます。",
+      appstore: "コードをコピーして App Store を開く", iosNote: "バッジを押すと招待コードがコピーされ、App Store が開きます。インストール後、ゲームの設定 > 友達を招待 で「貼り付け」を押してください。",
       iosSoon: "iPhone・iPad 版は準備中です。", desktop: "スマートフォンでこのページを開くと、すぐにインストールできます。",
       testing: "現在はクローズドテスト中のため、テストに参加した Google アカウントだけがインストールできます。", testingLink: "テストへの参加方法",
       installed: "すでにインストール済みですか？ゲームの設定 > 友達を招待 で上のコードを入力してください。コードはゲームを始めてから数日間だけ使えます。",
@@ -122,8 +125,8 @@
     es: {
       page: "Invitación | Starlit Camp", title: "Un amigo te invitó a {game}", lead: "Empieza el juego con este código de invitación y recibe un regalo.",
       codeLabel: "Código de invitación", copy: "Copiar código", copied: "Copiado",
-      play: "Disponible en Google Play", playNote: "Si instalas con este botón, el código de invitación se aplica solo. Recibes el regalo la primera vez que abres el juego.",
-      appstore: "Copiar el código y abrir App Store", iosNote: "Después de instalar, abre Ajustes > Invitar amigos en el juego y toca Pegar.",
+      play: "Disponible en Google Play", playNote: "Si instalas con esta insignia, el código de invitación se aplica solo. Recibes el regalo la primera vez que abres el juego.",
+      appstore: "Copiar el código y abrir App Store", iosNote: "Al tocar la insignia se copia el código y se abre el App Store. Después de instalar, abre Ajustes > Invitar amigos en el juego y toca Pegar.",
       iosSoon: "La versión para iPhone y iPad está en camino.", desktop: "Abre esta página en tu teléfono para instalar al instante.",
       testing: "Por ahora el juego está en prueba cerrada: solo pueden instalarlo las cuentas de Google que se unieron a la prueba.", testingLink: "Cómo unirse a la prueba",
       installed: "¿Ya lo instalaste? Introduce el código de arriba en el juego, en Ajustes > Invitar amigos. El código solo se puede usar durante los primeros días de juego.",
@@ -201,10 +204,10 @@
 
     var referrer = "invite=" + code + "&utm_source=invite&utm_medium=friend";
     var playUrl = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(game.package) + "&referrer=" + encodeURIComponent(referrer);
-    var play = $("play"); play.href = playUrl; play.textContent = S.play; text("playNote", S.playNote);
+    var play = $("play"); play.href = playUrl; $("playImg").src = "../img/badges/googleplay_" + lang + ".png"; $("playImg").alt = S.play; text("playNote", S.playNote);
     var store = $("appstore");
     if (game.appStore) {
-      store.href = game.appStore; store.textContent = S.appstore; text("iosNote", S.iosNote);
+      store.href = game.appStore; $("appstoreImg").src = "../img/badges/appstore_" + lang + ".svg"; $("appstoreImg").alt = S.appstore; text("iosNote", S.iosNote);
       store.addEventListener("click", function (e) { e.preventDefault(); copyCode(function () { location.href = game.appStore; }); });
     }
 

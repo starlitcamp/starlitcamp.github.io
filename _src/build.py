@@ -33,6 +33,23 @@ PLATS = {                                                          # platform ->
 }
 PLAT_LABEL = {"android": "Android", "ios": "iOS", "steam": "Steam"}
 
+# 사이트 규칙: 마켓은 글자 대신 마켓 아이콘으로 표기한다.
+#   - 상태 태그·안내 제목: 마켓 아이콘(Simple Icons, CC0 — _src/market_icons.json) + 상태
+#   - Google Play·App Store 로 가는 링크: 각 회사의 공식 배지(img/badges/, 언어별) 그대로 — 색·글자를 바꾸지 않는다
+#   - Steam 링크: Steam 아이콘 + 글자 버튼
+#   - 아이콘·배지를 쓰는 페이지 아래에 상표 고지(footer .tm)
+MARKET = {"android": "googleplay", "ios": "appstore", "steam": "steam"}
+MARKET_NAME = {"googleplay": "Google Play", "appstore": "App Store", "steam": "Steam"}
+ICON_PATHS = json.load(open(os.path.join(HERE, "market_icons.json"), encoding="utf-8"))
+TM_NOTE = ("Google Play and the Google Play logo are trademarks of Google LLC. "
+           "Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. "
+           "Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.")
+
+
+def icon(market, cls="mi"):
+    """Inline market icon (fill = currentColor)."""
+    return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="{ICON_PATHS[market]}"/></svg>'
+
 
 def load_config():
     src = open(os.path.join(ROOT, "games.js"), encoding="utf-8").read()
@@ -95,10 +112,31 @@ def when(game, statuses, plat="android"):
     return f' data-game="{game}"{p} data-when="{" ".join(statuses)}"{hidden}'
 
 
-def ahref(game, kind, label, cls="btn"):
+def ahref(game, kind, label, cls="btn", market=None):
     u = url_of(game, kind)
     hidden = "" if u else " hidden"
-    return f'<a class="{cls}" data-game="{game}" data-href="{kind}" href="{esc(u or "#")}" rel="noopener"{hidden}>{esc(label)}</a>'
+    ic = icon(market) if market else ""
+    return f'<a class="{cls}" data-game="{game}" data-href="{kind}" href="{esc(u or "#")}" rel="noopener"{hidden}>{ic}{esc(label)}</a>'
+
+
+def badge(lang, game, kind):
+    """Official store badge link: kind "store" (Google Play) or "appstore" (App Store), in the page's language."""
+    t = UI[lang]
+    u = url_of(game, kind)
+    hidden = "" if u else " hidden"
+    if kind == "store":
+        img, alt, cls = f"img/badges/googleplay_{lang}.png", t["b_play"], "googleplay"
+    else:
+        img, alt, cls = f"img/badges/appstore_{lang}.svg", t["b_appstore"], "appstore"
+    return (f'<a class="badge {cls}" data-game="{game}" data-href="{kind}" href="{esc(u or "#")}" rel="noopener"{hidden}>'
+            f'<img src="{up(lang)}{img}" alt="{esc(alt)}" height="44"></a>')
+
+
+def plat_icons(html_):
+    """<span class="plat">Google Play</span> in headings -> the market icon."""
+    for name, market in (("Google Play", "googleplay"), ("App Store", "appstore"), ("TestFlight", "appstore"), ("Steam", "steam")):
+        html_ = html_.replace(f'<span class="plat">{name}</span>', f'<span class="plat" title="{name}">{icon(market)}<span class="sr">{name}</span></span>')
+    return html_
 
 
 def mailto(subject):
@@ -172,6 +210,7 @@ def footer(lang):
     t = UI[lang]
     return f"""
   <footer><span>&copy; 2026 Starlit Camp</span><a href="privacy.html">{t['f_privacy']}</a><a href="terms.html">{t['f_terms']}</a><a href="data-deletion.html">{t['f_deletion']}</a><a href="mailto:{EMAIL}">{EMAIL}</a></footer>
+  <p class="tm">{TM_NOTE}</p>
 </div>
 </body>
 </html>
@@ -187,7 +226,8 @@ def status_spans(lang, game, plat="android"):
 def plat_tags(lang, game):
     """One tag per platform the game is on, e.g. "Android · 비공개 테스트 중" "iOS · 출시 준비 중" (games.js decides which show)."""
     out = "".join(
-        f'<span class="tag {plat}"{when(game, PLATS[plat], plat)}>{PLAT_LABEL[plat]} · {status_spans(lang, game, plat)}</span>'
+        f'<span class="tag {plat}" title="{MARKET_NAME[MARKET[plat]]}"{when(game, PLATS[plat], plat)}>{icon(MARKET[plat])}'
+        f'<span class="sr">{MARKET_NAME[MARKET[plat]]}: </span>{status_spans(lang, game, plat)}</span>'
         for plat in PLATS
     )
     return f'<span class="tags">{out}</span>'
@@ -254,7 +294,7 @@ def join_section(lang, key):
     testing = (f'    <div{when(key, ["testing"])}>\n      <h2>{t["j_test_h"]}</h2>\n      <p>{t["j_test_p"].format(name=esc(name))}</p>\n'
                f'    <ol class="steps">\n{s1}'
                + step(t["j2_t"], t["j2_d"], ahref(key, "optin", t["j2_b"], "btn primary"))
-               + step(t["j3_t"], t["j3_d"], ahref(key, "store", t["b_play"]))
+               + step(t["j3_t"], t["j3_d"], badge(lang, key, "store"))
                + step(t["j4_t"], t["j4_d"], f'<a class="btn" href="{esc(fb)}">{t["j4_b"]}</a>')
                + f'    </ol>\n      <p class="note">{t["j_test_note"]}</p>\n    </div>\n')
     recruiting = (f'    <div{when(key, ["recruiting"])}>\n      <h2>{t["j_rec_h"]}</h2>\n      <p>{t["j_rec_p"].format(name=esc(name))}</p>\n'
@@ -263,7 +303,7 @@ def join_section(lang, key):
                   + step(t["j4_t"], t["r3_d"])
                   + f'    </ol>\n      <p class="note">{t["j_rec_note"]}</p>\n    </div>\n')
     released = (f'    <div{when(key, ["released"])}>\n      <h2>{t["j_rel_h"]}</h2>\n      <p>{t["j_rel_p"].format(name=esc(name))}</p>\n'
-                f'      <div class="links">{ahref(key, "store", t["b_play"], "btn primary")}</div>\n'
+                f'      <div class="links">{badge(lang, key, "store")}</div>\n'
                 f'      <p class="note">{t["j_rel_thanks"]}</p>\n    </div>\n')
     soon = (f'    <div{when(key, ["soon"])}>\n      <h2>{t["j_soon_h"]}</h2>\n      <p>{t["j_soon_p"].format(name=esc(name))}</p>\n    </div>\n')
     android = f'  <section id="join" class="join">\n{testing}{recruiting}{released}{soon}  </section>\n'
@@ -277,18 +317,18 @@ def join_section(lang, key):
     ios = (block("ios", "soon", t["ios_soon_h"], t["ios_soon_p"], note=t["ios_note"])
            + block("ios", "testing", t["ios_test_h"], t["ios_test_p"], note=t["ios_note"], steps=(
                '    <ol class="steps">\n'
-               + step(t["tf1_t"], t["tf1_d"], f'<a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">{t["tf1_b"]}</a>')
-               + step(t["tf2_t"], t["tf2_d"], ahref(key, "testflight", t["tf2_b"], "btn primary"))
+               + step(t["tf1_t"], t["tf1_d"], f'<a class="btn" href="https://apps.apple.com/app/testflight/id899247664" rel="noopener">{icon("appstore")}{t["tf1_b"]}</a>')
+               + step(t["tf2_t"], t["tf2_d"], ahref(key, "testflight", t["tf2_b"], "btn primary", "appstore"))
                + step(t["tf3_t"], t["tf3_d"], f'<a class="btn" href="{esc(fb)}">{t["j4_b"]}</a>')
                + '    </ol>\n'))
-           + block("ios", "released", t["ios_rel_h"], t["ios_rel_p"], ahref(key, "appstore", t["b_appstore"], "btn primary"), t["ios_note"]))
+           + block("ios", "released", t["ios_rel_h"], t["ios_rel_p"], badge(lang, key, "appstore"), t["ios_note"]))
     ios = f'  <section id="ios" class="join"{when(key, PLATS["ios"], "ios")}>\n{ios}  </section>\n'
 
     steam = (block("steam", "dev", t["steam_dev_h"], t["steam_dev_p"])
-             + block("steam", "soon", t["steam_soon_h"], t["steam_soon_p"], ahref(key, "steam", t["b_steam_page"], "btn"))
-             + block("steam", "wishlist", t["steam_wish_h"], t["steam_wish_p"], ahref(key, "steam", t["b_steam_wish"], "btn primary"))
-             + block("steam", "demo", t["steam_demo_h"], t["steam_demo_p"], ahref(key, "steam", t["b_steam_demo"], "btn primary"))
-             + block("steam", "released", t["steam_rel_h"], t["steam_rel_p"], ahref(key, "steam", t["b_steam"], "btn primary")))
+             + block("steam", "soon", t["steam_soon_h"], t["steam_soon_p"], ahref(key, "steam", t["b_steam_page"], "btn", "steam"))
+             + block("steam", "wishlist", t["steam_wish_h"], t["steam_wish_p"], ahref(key, "steam", t["b_steam_wish"], "btn primary", "steam"))
+             + block("steam", "demo", t["steam_demo_h"], t["steam_demo_p"], ahref(key, "steam", t["b_steam_demo"], "btn primary", "steam"))
+             + block("steam", "released", t["steam_rel_h"], t["steam_rel_p"], ahref(key, "steam", t["b_steam"], "btn primary", "steam")))
     steam = f'  <section id="steam" class="join"{when(key, PLATS["steam"], "steam")}>\n{steam}  </section>\n'
     return android + ios + steam
 
@@ -317,12 +357,12 @@ def build_game(lang, key):
   <p class="lead">{g['lead'][lang]}</p>
   <div class="links">
     <a class="btn primary"{when(key, ["recruiting", "testing"])} href="#join">{t['cta_join']}</a>
-    <span{when(key, ["released"])}>{ahref(key, "store", t["b_play"], "btn primary")}</span>
-    <span{when(key, ["released"], "ios")}>{ahref(key, "appstore", t["b_appstore"], "btn primary")}</span>
-    <a class="btn"{when(key, ["testing"], "ios")} href="#ios">{t['cta_testflight']}</a>
-    <span{when(key, ["wishlist", "soon"], "steam")}>{ahref(key, "steam", t["b_steam_wish"], "btn primary")}</span>
-    <span{when(key, ["demo"], "steam")}>{ahref(key, "steam", t["b_steam_demo"], "btn primary")}</span>
-    <span{when(key, ["released"], "steam")}>{ahref(key, "steam", t["b_steam"], "btn primary")}</span>
+    <span{when(key, ["released"])}>{badge(lang, key, "store")}</span>
+    <span{when(key, ["released"], "ios")}>{badge(lang, key, "appstore")}</span>
+    <a class="btn"{when(key, ["testing"], "ios")} href="#ios">{icon("appstore")}{t['cta_testflight']}</a>
+    <span{when(key, ["wishlist", "soon"], "steam")}>{ahref(key, "steam", t["b_steam_wish"], "btn primary", "steam")}</span>
+    <span{when(key, ["demo"], "steam")}>{ahref(key, "steam", t["b_steam_demo"], "btn primary", "steam")}</span>
+    <span{when(key, ["released"], "steam")}>{ahref(key, "steam", t["b_steam"], "btn primary", "steam")}</span>
   </div>
 """
     shots = g["shots"][lang] if isinstance(g["shots"], dict) else g["shots"]   # localized store shots per language
@@ -337,7 +377,7 @@ def build_game(lang, key):
 {feats}
   </ul>
 
-{join_section(lang, key)}
+{plat_icons(join_section(lang, key))}
   <h2>{t['support_h2']}</h2>
   <div class="links">
     <a class="btn" href="{esc(mailto(t['contact_subject'].format(name=name)))}">{t['b_contact']}</a>

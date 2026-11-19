@@ -76,3 +76,15 @@ header.site nav{display:flex;flex-wrap:wrap;row-gap:4px}
 @media (max-width:620px){.shots.wide{grid-template-columns:1fr}}
 .join h2 .plat{white-space:nowrap}
 .shots.wide img:last-child:nth-child(odd){grid-column:1/-1}
+/* market icons & official store badges (site rule: markets are shown by their icons) */
+.mi{width:1em;height:1em;fill:currentColor;vertical-align:-.14em;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tag .mi{width:12px;height:12px;margin-right:5px;vertical-align:-2px}
+.btn .mi{margin-right:7px}
+.join h2 .plat{display:inline-block;vertical-align:-2px}
+.join h2 .plat .mi{width:20px;height:20px}
+.badge{display:inline-block;line-height:0;border-radius:8px;vertical-align:middle}
+.badge img{height:44px;width:auto;display:block}
+.badge:hover{opacity:.88}
+.links span:has(> .badge){display:inline-flex}
+.tm{font-size:11px;line-height:1.5;color:#6c6b86;margin:12px 0 0}
