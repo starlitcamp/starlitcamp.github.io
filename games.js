@@ -34,7 +34,7 @@ window.STARLIT_GAMES = /*CONFIG*/{
     "steamAppId": 0
   },
   "wizardtower": {
-    "status": "testing",
+    "status": "released",
     "package": "com.starlitcamp.wizardtower",
     "group": "starlitcamp-testers",
     "ios": "soon",
