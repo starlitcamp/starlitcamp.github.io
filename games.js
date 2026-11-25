@@ -27,8 +27,8 @@ window.STARLIT_GAMES = /*CONFIG*/{
     "status": "testing",
     "package": "com.quasarlab.stellarbloom",
     "group": "starlitcamp-testers",
-    "ios": "soon",
-    "appStore": "",
+    "ios": "released",
+    "appStore": "https://apps.apple.com/app/id6835690648",
     "testFlight": "",
     "steam": "",
     "steamAppId": 0

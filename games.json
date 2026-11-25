@@ -3,10 +3,10 @@
     {
       "id": "stellarbloom",
       "android": "com.quasarlab.stellarbloom",
-      "ios": "",
+      "ios": "6835690648",
       "steam": 0,
       "status": "testing",
-      "status_ios": "soon",
+      "status_ios": "released",
       "status_steam": "",
       "page": "stellarbloom.html",
       "icon": "img/stellarbloom_icon.jpg",
