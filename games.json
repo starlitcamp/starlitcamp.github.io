@@ -3,7 +3,7 @@
     {
       "id": "stellarbloom",
       "android": "com.quasarlab.stellarbloom",
-      "ios": "6835690648",
+      "ios": "https://apps.apple.com/app/id6835690648",
       "steam": 0,
       "status": "testing",
       "status_ios": "released",
@@ -33,11 +33,11 @@
       "pixel": true,
       "name_ko": "마법사의 탑",
       "desc_ko": "마물의 탑을 한 층씩 오르며 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG",
-      "name_en": "Wizard Tower",
+      "name_en": "Starlit Wizard",
       "desc_en": "Climb a monster-filled tower and sweep away hordes with evolving spells. A pixel-art idle RPG.",
-      "name_ja": "Wizard Tower",
+      "name_ja": "Starlit Wizard",
       "desc_ja": "魔物の塔を一階ずつ登り、進化する魔法で大軍を一掃するドット絵放置RPG",
-      "name_es": "Wizard Tower",
+      "name_es": "Starlit Wizard",
       "desc_es": "Sube una torre llena de monstruos y barre hordas con hechizos que evolucionan. Un RPG idle de pixel art."
     },
     {
