@@ -23,11 +23,6 @@ sys.path.insert(0, HERE)
 from strings import LANGS, LANG_NAMES, GROUP_NAME, EMAIL, UI, GAMES  # noqa: E402
 
 SITE = "https://starlitcamp.github.io/"
-OG_LOCALE = {"ko": "ko_KR", "en": "en_US", "ja": "ja_JP", "es": "es_ES"}
-SITE_VERIFICATION = {
-    "google-site-verification": "",
-    "naver-site-verification": "",
-}
 PAGES = ["index.html", "stellarbloom.html", "wizardtower.html", "starspire.html", "privacy.html", "terms.html", "data-deletion.html"]
 AUTO_LANG_PAGES = {"index.html", "stellarbloom.html", "wizardtower.html", "starspire.html"}
 STATUSES = ["soon", "recruiting", "testing", "released"]          # Android (games.js "status")
@@ -37,6 +32,11 @@ PLATS = {                                                          # platform ->
     "steam": ["dev", "soon", "wishlist", "demo", "released"],
 }
 PLAT_LABEL = {"android": "Android", "ios": "iOS", "steam": "Steam"}
+OG_LOCALE = {"ko": "ko_KR", "en": "en_US", "ja": "ja_JP", "es": "es_ES"}
+SITE_VERIFICATION = {
+    "google-site-verification": "",
+    "naver-site-verification": "",
+}
 
 # 사이트 규칙: 마켓은 글자 대신 마켓 아이콘으로 표기한다.
 #   - 상태 태그·안내 제목: 마켓 아이콘(Simple Icons, CC0 — _src/market_icons.json) + 상태
@@ -366,8 +366,11 @@ def build_game(lang, key):
     c = CFG.get(key, {})
     u = up(lang)
     name = g["name"][lang]
-    genre = g["genre"][lang]
-    title = f"{name} ({g['alt_name']}) - {genre} | Starlit Camp" if lang == "ko" else f"{name} - {genre} | Starlit Camp"
+    genre = (g.get("genre") or {}).get(lang, "")
+    if genre:
+        title = f"{name} ({g['alt_name']}) - {genre} | Starlit Camp" if lang == "ko" else f"{name} - {genre} | Starlit Camp"
+    else:
+        title = f"{name} ({g['alt_name']}) | Starlit Camp" if lang == "ko" else f"{name} | Starlit Camp"
     plats, os_list = [], []
     if stat(c, "android"):
         plats.append("Android")
@@ -380,7 +383,7 @@ def build_game(lang, key):
         os_list.append("Windows")
     store_urls = []
     if stat(c, "android") == "released" and c.get("package"):
-        store_urls.append(url_of(key, "store"))
+        store_urls.append(f"https://play.google.com/store/apps/details?id={c['package']}")
     if stat(c, "ios") == "released" and c.get("appStore"):
         store_urls.append(c["appStore"])
     if stat(c, "steam") == "released" and c.get("steamAppId"):
@@ -392,7 +395,6 @@ def build_game(lang, key):
         "description": g["desc"][lang],
         "image": f"{SITE}{g['feature']}",
         "url": f"{SITE}{folder(lang)}{g['page']}",
-        "genre": genre,
         "gamePlatform": plats,
         "operatingSystem": ", ".join(os_list),
         "applicationCategory": "Game",
@@ -400,6 +402,8 @@ def build_game(lang, key):
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
         "author": {"@type": "Organization", "name": "Starlit Camp", "url": SITE},
     }
+    if genre:
+        vg["genre"] = genre
     if store_urls:
         vg["sameAs"] = store_urls
     extra = json_ld(vg)
@@ -412,13 +416,16 @@ def build_game(lang, key):
     out = head(lang, g["page"], title, g["desc"][lang], g["feature"], extra)
     out += header(lang, g["page"])
     px = " pixel" if g["pixel"] else ""
-    sub = f"{g['alt_name']} · {genre}" if lang == "ko" else genre
+    if genre:
+        sub = f"{g['alt_name']} · {genre}" if lang == "ko" else genre
+    else:
+        sub = g["alt_name"] if lang == "ko" else ""
     out += f"""
   <div class="gamehead{px}">
     <img src="{u}{g['icon']}" alt="{esc(name)}">
     <div>
       <h1>{esc(name)}</h1>
-      <p class="sub">{esc(sub)}{plat_tags(lang, key)}</p>
+      <p class="sub">{esc(sub.rstrip(" ·"))}{plat_tags(lang, key)}</p>
     </div>
   </div>
   <div class="hero{px}"><img src="{u}{g['feature']}" alt="{esc(g['hero_alt'][lang])}"></div>
