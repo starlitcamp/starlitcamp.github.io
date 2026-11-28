@@ -14,7 +14,7 @@
     if (!g) return null;
     if (kind === "group") return g.group ? "https://groups.google.com/g/" + g.group : null;
     if (kind === "optin") return g.package ? "https://play.google.com/apps/testing/" + g.package : null;
-    if (kind === "store") return g.package ? "https://play.google.com/store/apps/details?id=" + g.package : null;
+    if (kind === "store") return g.package ? "https://play.google.com/store/apps/details?id=" + g.package + "&referrer=utm_source%3Dstarlitcamp_site%26utm_medium%3Dweb%26utm_campaign%3D" + encodeURIComponent(game) : null;
     if (kind === "appstore") return g.appStore || null;
     if (kind === "testflight") return g.testFlight || null;
     if (kind === "steam") return g.steamAppId ? "https://store.steampowered.com/app/" + g.steamAppId + "/" : null;

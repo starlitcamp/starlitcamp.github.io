@@ -23,6 +23,11 @@ sys.path.insert(0, HERE)
 from strings import LANGS, LANG_NAMES, GROUP_NAME, EMAIL, UI, GAMES  # noqa: E402
 
 SITE = "https://starlitcamp.github.io/"
+OG_LOCALE = {"ko": "ko_KR", "en": "en_US", "ja": "ja_JP", "es": "es_ES"}
+SITE_VERIFICATION = {
+    "google-site-verification": "",
+    "naver-site-verification": "",
+}
 PAGES = ["index.html", "stellarbloom.html", "wizardtower.html", "starspire.html", "privacy.html", "terms.html", "data-deletion.html"]
 AUTO_LANG_PAGES = {"index.html", "stellarbloom.html", "wizardtower.html", "starspire.html"}
 STATUSES = ["soon", "recruiting", "testing", "released"]          # Android (games.js "status")
@@ -98,7 +103,8 @@ def url_of(game, kind):
     return {
         "group": "https://groups.google.com/g/" + g["group"] if g.get("group") else "",
         "optin": "https://play.google.com/apps/testing/" + pkg if pkg else "",
-        "store": "https://play.google.com/store/apps/details?id=" + pkg if pkg else "",
+        "store": (f"https://play.google.com/store/apps/details?id={pkg}"
+                  f"&referrer=utm_source%3Dstarlitcamp_site%26utm_medium%3Dweb%26utm_campaign%3D{game}") if pkg else "",
         "appstore": g.get("appStore") or "",
         "testflight": g.get("testFlight") or "",
         "steam": f"https://store.steampowered.com/app/{app}/" if app else "",
@@ -158,6 +164,11 @@ def ver(name):
         return name + "?v=" + hashlib.md5(f.read()).hexdigest()[:8]
 
 
+def json_ld(data):
+    raw = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/ld+json">{raw}</script>\n'
+
+
 def head(lang, page, title, desc, og_image=None, extra=""):
     u = up(lang)
     alts = "\n".join(
@@ -165,11 +176,18 @@ def head(lang, page, title, desc, og_image=None, extra=""):
     )
     alts += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{"" if page == "index.html" else page}">'
     canonical = f'{SITE}{folder(lang)}{"" if page == "index.html" else page}'
+    verify = "".join(
+        f'<meta name="{k}" content="{esc(v)}">\n' for k, v in SITE_VERIFICATION.items() if v
+    )
     og = ""
     if og_image:
-        og = (f'<meta property="og:title" content="{esc(title.split(" | ")[0])}">\n'
+        og = (f'<meta property="og:type" content="website">\n'
+              f'<meta property="og:url" content="{canonical}">\n'
+              f'<meta property="og:locale" content="{OG_LOCALE[lang]}">\n'
+              f'<meta property="og:title" content="{esc(title.split(" | ")[0])}">\n'
               f'<meta property="og:description" content="{esc(desc)}">\n'
-              f'<meta property="og:image" content="{SITE}{og_image}">\n')
+              f'<meta property="og:image" content="{SITE}{og_image}">\n'
+              f'<meta name="twitter:card" content="summary_large_image">\n')
     auto = AUTO_LANG_JS + "\n" if (lang == "ko" and page in AUTO_LANG_PAGES) else ""
     return f"""<!doctype html>
 <html lang="{lang}">
@@ -178,7 +196,7 @@ def head(lang, page, title, desc, og_image=None, extra=""):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 {auto}<title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-{og}<link rel="canonical" href="{canonical}">
+{verify}{og}<link rel="canonical" href="{canonical}">
 {alts}
 <link rel="icon" href="{u}img/favicon.png" type="image/png">
 <link rel="stylesheet" href="{u}{ver('style.css')}">
@@ -237,7 +255,16 @@ def plat_tags(lang, game):
 def build_index(lang):
     t = UI[lang]
     u = up(lang)
-    out = head(lang, "index.html", t["home_title"], t["home_desc"], "img/starlitcamp_header.png")
+    ld = json_ld({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Starlit Camp",
+        "url": SITE,
+        "logo": f"{SITE}img/starlitcamp_icon.png",
+        "email": EMAIL,
+        "description": t["home_desc"],
+    })
+    out = head(lang, "index.html", t["home_title"], t["home_desc"], "img/starlitcamp_header.png", ld)
     out += header(lang, "index.html")
     out += f"""
   <div class="hero"><img src="{u}img/starlitcamp_header.png" alt="Starlit Camp" style="image-rendering:pixelated"></div>
@@ -336,20 +363,62 @@ def join_section(lang, key):
 def build_game(lang, key):
     t = UI[lang]
     g = GAMES[key]
+    c = CFG.get(key, {})
     u = up(lang)
     name = g["name"][lang]
-    title = f"{name} ({g['alt_name']}) | Starlit Camp" if lang == "ko" else f"{name} | Starlit Camp"
-    extra = "<style>.pixel img{image-rendering:pixelated}</style>\n" if g["pixel"] else ""
+    genre = g["genre"][lang]
+    title = f"{name} ({g['alt_name']}) - {genre} | Starlit Camp" if lang == "ko" else f"{name} - {genre} | Starlit Camp"
+    plats, os_list = [], []
+    if stat(c, "android"):
+        plats.append("Android")
+        os_list.append("Android")
+    if stat(c, "ios"):
+        plats.append("iOS")
+        os_list.append("iOS")
+    if stat(c, "steam"):
+        plats.append("PC")
+        os_list.append("Windows")
+    store_urls = []
+    if stat(c, "android") == "released" and c.get("package"):
+        store_urls.append(url_of(key, "store"))
+    if stat(c, "ios") == "released" and c.get("appStore"):
+        store_urls.append(c["appStore"])
+    if stat(c, "steam") == "released" and c.get("steamAppId"):
+        store_urls.append(url_of(key, "steam"))
+    vg = {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": name,
+        "description": g["desc"][lang],
+        "image": f"{SITE}{g['feature']}",
+        "url": f"{SITE}{folder(lang)}{g['page']}",
+        "genre": genre,
+        "gamePlatform": plats,
+        "operatingSystem": ", ".join(os_list),
+        "applicationCategory": "Game",
+        "inLanguage": lang,
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "author": {"@type": "Organization", "name": "Starlit Camp", "url": SITE},
+    }
+    if store_urls:
+        vg["sameAs"] = store_urls
+    extra = json_ld(vg)
+    if stat(c, "ios") == "released" and c.get("appStore"):
+        m = re.search(r"id(\d+)", c["appStore"])
+        if m:
+            extra += f'<meta name="apple-itunes-app" content="app-id={m.group(1)}">\n'
+    if g["pixel"]:
+        extra += "<style>.pixel img{image-rendering:pixelated}</style>\n"
     out = head(lang, g["page"], title, g["desc"][lang], g["feature"], extra)
     out += header(lang, g["page"])
     px = " pixel" if g["pixel"] else ""
-    sub = g["alt_name"] if lang == "ko" else ""
+    sub = f"{g['alt_name']} · {genre}" if lang == "ko" else genre
     out += f"""
   <div class="gamehead{px}">
     <img src="{u}{g['icon']}" alt="{esc(name)}">
     <div>
       <h1>{esc(name)}</h1>
-      <p class="sub">{esc(sub.rstrip(" ·"))}{plat_tags(lang, key)}</p>
+      <p class="sub">{esc(sub)}{plat_tags(lang, key)}</p>
     </div>
   </div>
   <div class="hero{px}"><img src="{u}{g['feature']}" alt="{esc(g['hero_alt'][lang])}"></div>
@@ -431,7 +500,37 @@ def main():
                 f.write(s)
             written.append(os.path.relpath(p, ROOT))
     write_games_json()
-    print("built", len(written), "pages:", " ".join(written), "+ games.json")
+    write_robots()
+    write_sitemap()
+    print("built", len(written), "pages:", " ".join(written), "+ games.json + robots.txt + sitemap.xml")
+
+
+def write_robots():
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8", newline="\n") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
+
+
+def write_sitemap():
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ]
+    for page in PAGES:
+        suffix = "" if page == "index.html" else page
+        alts = "".join(
+            f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{folder(l)}{suffix}"/>\n'
+            for l in LANGS
+        )
+        alts += f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{suffix}"/>\n'
+        for lang in LANGS:
+            lines.append("  <url>")
+            lines.append(f"    <loc>{SITE}{folder(lang)}{suffix}</loc>")
+            lines.append(alts.rstrip("\n"))
+            lines.append("  </url>")
+    lines.append("</urlset>\n")
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lines))
 
 
 def write_games_json():

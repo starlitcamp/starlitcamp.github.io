@@ -11,7 +11,7 @@ UI = {
     "ko": dict(
         nav_games="게임", nav_privacy="개인정보처리방침", nav_terms="이용약관", nav_contact="문의",
         f_privacy="개인정보처리방침", f_terms="이용약관", f_deletion="데이터 삭제",
-        home_title="Starlit Camp", home_desc="Starlit Camp - 별빛 아래 모닥불 곁에서 작은 게임을 만드는 인디 게임 스튜디오",
+        home_title="Starlit Camp - 인디 게임 스튜디오 | 방치형 RPG·우주 성장 게임", home_desc="Starlit Camp - 별빛 아래 모닥불 곁에서 작은 게임을 만드는 인디 게임 스튜디오",
         home_h1="모닥불 곁에서 만드는 작은 게임",
         home_lead="Starlit Camp는 별빛 아래 모닥불 앞에 앉아 쉬는 것처럼 편안하고, 끝까지 다듬은 작은 게임을 만드는 인디 게임 스튜디오입니다. 모바일 게임은 Android와 iPhone·iPad에 함께 내고, PC 게임은 Steam으로 선보여요.",
         games_h2="게임", contact_h2="문의", contact_line="문의 및 지원",
@@ -83,7 +83,7 @@ UI = {
     "en": dict(
         nav_games="Games", nav_privacy="Privacy", nav_terms="Terms", nav_contact="Contact",
         f_privacy="Privacy Policy", f_terms="Terms of Service", f_deletion="Data deletion",
-        home_title="Starlit Camp", home_desc="Starlit Camp - an independent studio making small, cozy games by the campfire under the stars",
+        home_title="Starlit Camp - Indie Game Studio | Pixel Idle RPG & Space Games", home_desc="Starlit Camp - an independent studio making small, cozy games by the campfire under the stars",
         home_h1="Small games, made by the campfire",
         home_lead="Starlit Camp is an independent game studio making small, cozy games polished to the last detail, as relaxing as sitting by a campfire under the stars. Our mobile games launch on both Android and iPhone/iPad, and our PC games come to Steam.",
         games_h2="Games", contact_h2="Contact", contact_line="Questions and support",
@@ -152,7 +152,7 @@ UI = {
     "ja": dict(
         nav_games="ゲーム", nav_privacy="プライバシー", nav_terms="利用規約", nav_contact="お問い合わせ",
         f_privacy="プライバシーポリシー", f_terms="利用規約", f_deletion="データ削除",
-        home_title="Starlit Camp", home_desc="Starlit Camp - 星空の下、焚き火のそばで小さなゲームを作るインディーゲームスタジオ",
+        home_title="Starlit Camp - インディーゲームスタジオ | ドット絵放置RPG・宇宙育成ゲーム", home_desc="Starlit Camp - 星空の下、焚き火のそばで小さなゲームを作るインディーゲームスタジオ",
         home_h1="焚き火のそばで作る、小さなゲーム",
         home_lead="Starlit Camp は、星空の下で焚き火を囲んでくつろぐような心地よさと、最後まで磨き上げた手ざわりを大切に、小さなゲームを作るインディーゲームスタジオです。モバイルゲームは Android と iPhone・iPad で同時に配信し、PC ゲームは Steam でお届けします。",
         games_h2="ゲーム", contact_h2="お問い合わせ", contact_line="お問い合わせ・サポート",
@@ -221,7 +221,7 @@ UI = {
     "es": dict(
         nav_games="Juegos", nav_privacy="Privacidad", nav_terms="Condiciones", nav_contact="Contacto",
         f_privacy="Política de privacidad", f_terms="Condiciones de servicio", f_deletion="Eliminación de datos",
-        home_title="Starlit Camp", home_desc="Starlit Camp - un estudio independiente que crea pequeños juegos acogedores junto a la hoguera, bajo las estrellas",
+        home_title="Starlit Camp - Estudio de Juegos Indie | RPG Idle Pixel Art y Espacio", home_desc="Starlit Camp - un estudio independiente que crea pequeños juegos acogedores junto a la hoguera, bajo las estrellas",
         home_h1="Pequeños juegos hechos junto a la hoguera",
         home_lead="Starlit Camp es un estudio de videojuegos independiente que crea juegos pequeños, acogedores y pulidos hasta el último detalle, tan relajantes como sentarse junto a una hoguera bajo las estrellas. Nuestros juegos para móviles salen a la vez en Android y iPhone/iPad, y los de PC llegan a Steam.",
         games_h2="Juegos", contact_h2="Contacto", contact_line="Consultas y soporte",
@@ -295,6 +295,7 @@ GAMES = {
         shots={l: [f"img/stellarbloom_{l}_{i}.jpg" for i in range(1, 9)] for l in ("ko", "en", "ja", "es")},
         name={"ko": "행성 키우기", "en": "Stellar Bloom", "ja": "Stellar Bloom", "es": "Stellar Bloom"},
         alt_name="Stellar Bloom",
+        genre={"ko": "블랙홀·우주 성장 게임", "en": "Space Growth Game", "ja": "ブラックホール・宇宙育成ゲーム", "es": "Juego espacial de crecimiento"},
         card={
             "ko": "먼지 한 톨에서 행성, 별, 블랙홀, 은하까지. 부수고 삼켜서 진화하고, 다가오는 포식자보다 먼저 커지세요.",
             "en": "From a speck of dust to planets, stars, black holes and galaxies. Smash, swallow and evolve, and outgrow what's coming for you.",
@@ -371,6 +372,7 @@ GAMES = {
         shots=["img/wizardtower_shot1.png", "img/wizardtower_shot2.png", "img/wizardtower_shot3.png", "img/wizardtower_shot4.png", "img/wizardtower_shot5.png"],
         name={"ko": "마법사의 탑", "en": "Starlit Wizard", "ja": "Starlit Wizard", "es": "Starlit Wizard"},
         alt_name="Starlit Wizard",
+        genre={"ko": "도트 방치형 RPG", "en": "Pixel Idle RPG", "ja": "ドット絵放置RPG", "es": "RPG idle pixel art"},
         card={
             "ko": "마물의 탑을 한 층씩 오르며 마법사의 써클을 높이고, 진화하는 마법으로 대군을 쓸어버리는 도트 방치 RPG.",
             "en": "Climb a monster-filled tower floor by floor, rise through the wizard circles and sweep away hordes with evolving spells. A pixel-art idle RPG.",
@@ -435,6 +437,7 @@ GAMES = {
         shots=["img/starspire_shot1.png", "img/starspire_shot2.png", "img/starspire_shot3.png", "img/starspire_shot4.png", "img/starspire_shot5.png"],
         name={"ko": "스타스파이어", "en": "StarSpire", "ja": "StarSpire", "es": "StarSpire"},
         alt_name="StarSpire",
+        genre={"ko": "도트 방치형·클리커 게임", "en": "Pixel Incremental Game", "ja": "ドット絵放置・クリッカーゲーム", "es": "Juego incremental pixel art"},
         card={
             "ko": "커서로 하늘에 뜬 자원을 모으고 몰려드는 마물을 막으며, 마법사의 탑을 별까지 쌓아 올리는 도트 방치형 게임.",
             "en": "Gather resources from the sky with your cursor, hold off swarming monsters and build a wizard's tower all the way to the stars. A pixel-art incremental game.",
